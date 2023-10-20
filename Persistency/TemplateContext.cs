@@ -48,6 +48,7 @@ public class ApiDbContext : DbContext
             modelBuilder.Entity<Proveedor>().HasAlternateKey(p=>p.NitProveedor);
             modelBuilder.Entity<Empleado>().HasAlternateKey(p=>p.CodigoEmpleado);
             modelBuilder.Entity<Inventario>().HasAlternateKey(p=>p.CodigoInventario);
+            modelBuilder.Entity<Talla>().HasAlternateKey(p=>p.Descripcion);
         }
 
 }

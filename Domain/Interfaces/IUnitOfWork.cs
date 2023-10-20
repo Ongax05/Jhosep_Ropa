@@ -11,7 +11,7 @@ public interface IUnitOfWork
     IDetalleOrden DetallesOrdenes { get; }
     IDetalleVenta DetallesVentas { get; }
     IEmpleado Empleados { get; }
-    IEmpresa Empresa { get; }
+    IEmpresa Empresas { get; }
     IEstado Estados { get; }
     IFormaPago FormasPagos { get; }
     IGenero Generos { get; }
