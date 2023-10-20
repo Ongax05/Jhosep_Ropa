@@ -15,10 +15,7 @@ public class UnitOfWork : IUnitOfWork, IDisposable
     {
         get
         {
-            if (_roles == null)
-            {
-                _roles = new RolRepository(_context);
-            }
+            _roles ??= new RolRepository(_context);
             return _roles;
         }
     }
@@ -27,10 +24,7 @@ public class UnitOfWork : IUnitOfWork, IDisposable
     {
         get
         {
-            if (_users == null)
-            {
-                _users = new UserRepository(_context);
-            }
+            _users ??= new UserRepository(_context);
             return _users;
         }
     }

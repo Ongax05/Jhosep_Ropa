@@ -9,6 +9,9 @@ public class ApiDbContext : DbContext
         public ApiDbContext(DbContextOptions options) : base(options)
         {
         }
+        public DbSet<InsumoPrenda> InsumosPrendas { get; set; }
+        public DbSet<InsumoProveedor> InsumosProveedores { get; set; }
+        public DbSet<InventarioTalla> InventariosTallas { get; set; }
         public DbSet<Rol> Roles { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Cargo> Cargos { get; set; }
