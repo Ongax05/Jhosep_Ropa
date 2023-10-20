@@ -1,0 +1,198 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\APT01-59\\Desktop\\Jhosep_Ropa\\Aplication\\Aplication.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\APT01-59\\Desktop\\Jhosep_Ropa\\Aplication\\Aplication.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\APT01-59\\Desktop\\Jhosep_Ropa\\Aplication\\Aplication.csproj",
+        "projectName": "Aplication",
+        "projectPath": "C:\\Users\\APT01-59\\Desktop\\Jhosep_Ropa\\Aplication\\Aplication.csproj",
+        "packagesPath": "C:\\Users\\APT01-59\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\APT01-59\\Desktop\\Jhosep_Ropa\\Aplication\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\APT01-59\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\APT01-59\\Desktop\\Jhosep_Ropa\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\APT01-59\\Desktop\\Jhosep_Ropa\\Domain\\Domain.csproj"
+              },
+              "C:\\Users\\APT01-59\\Desktop\\Jhosep_Ropa\\Persistency\\Persistency.csproj": {
+                "projectPath": "C:\\Users\\APT01-59\\Desktop\\Jhosep_Ropa\\Persistency\\Persistency.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\APT01-59\\Desktop\\Jhosep_Ropa\\Domain\\Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\APT01-59\\Desktop\\Jhosep_Ropa\\Domain\\Domain.csproj",
+        "projectName": "Domain",
+        "projectPath": "C:\\Users\\APT01-59\\Desktop\\Jhosep_Ropa\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\APT01-59\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\APT01-59\\Desktop\\Jhosep_Ropa\\Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\APT01-59\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "FluentValidation.AspNetCore": {
+              "target": "Package",
+              "version": "[11.3.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.10, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\APT01-59\\Desktop\\Jhosep_Ropa\\Persistency\\Persistency.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\APT01-59\\Desktop\\Jhosep_Ropa\\Persistency\\Persistency.csproj",
+        "projectName": "Persistency",
+        "projectPath": "C:\\Users\\APT01-59\\Desktop\\Jhosep_Ropa\\Persistency\\Persistency.csproj",
+        "packagesPath": "C:\\Users\\APT01-59\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\APT01-59\\Desktop\\Jhosep_Ropa\\Persistency\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\APT01-59\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\APT01-59\\Desktop\\Jhosep_Ropa\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\APT01-59\\Desktop\\Jhosep_Ropa\\Domain\\Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.10, )"
+            },
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
