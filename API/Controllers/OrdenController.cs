@@ -114,5 +114,25 @@ namespace API.Controllers
                 OrdenParams.PageSize
             );
         }
+        [HttpGet("GetOrdenesByCliente")]
+        [MapToApiVersion("1.0")]
+        public async Task<ActionResult<Pager<OrdenCTDto>>> GetOrdenesByCliente(
+            [FromQuery] Params OrdenParams,
+            string CodigoCliente
+        )
+        {
+            var (totalRegisters, registers) = await _unitOfWork.Ordenes.GetOrdenesByCliente(
+                OrdenParams.PageIndex,
+                OrdenParams.PageSize,
+                CodigoCliente
+            );
+            var OrdenListDto = _mapper.Map<List<OrdenCTDto>>(registers);
+            return new Pager<OrdenCTDto>(
+                OrdenListDto,
+                totalRegisters,
+                OrdenParams.PageIndex,
+                OrdenParams.PageSize
+            );
+        }
     }
 }

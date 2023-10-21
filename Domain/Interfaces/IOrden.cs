@@ -9,5 +9,6 @@ namespace Domain.Interfaces
     public interface IOrden : IGenericRepository<Orden>
     {
         Task<(int totalRegisters, IEnumerable<Orden> registers)> GetOrdenesByEstadoProceso (int pageIndex, int pageSize);
+        Task<(int totalRegisters, IEnumerable<Orden> registers)> GetOrdenesByCliente (int pageIndex, int pageSize, string CodigoCliente);
     }
 }

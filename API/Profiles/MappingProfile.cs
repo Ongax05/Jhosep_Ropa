@@ -36,6 +36,10 @@ namespace API.Profiles
             CreateMap<Venta,VentaDto>().ReverseMap();
             CreateMap<InsumoPrenda,InsumoPrendaDto>().ReverseMap();
             CreateMap<InsumoProveedor,InsumoProveedorDto>().ReverseMap();
+            CreateMap<Orden,OrdenCTDto>().ReverseMap();
+            CreateMap<Cliente,ClienteCTDto>().ReverseMap();
+            CreateMap<DetalleOrden,DetalleOrdenPrendaDto>().ReverseMap();
+            CreateMap<Estado,EstadoCTDto>().ReverseMap();
         }
     }
 }

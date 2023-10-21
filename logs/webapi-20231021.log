@@ -1,0 +1,851 @@
+[2023-10-21 00:59:23.136 -05:00 INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE DATABASE `Ropa`;
+[2023-10-21 00:59:23.281 -05:00 INF] Executed DbCommand (48ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `__EFMigrationsHistory` (
+    `MigrationId` varchar(150) CHARACTER SET utf8mb4 NOT NULL,
+    `ProductVersion` varchar(32) CHARACTER SET utf8mb4 NOT NULL,
+    CONSTRAINT `PK___EFMigrationsHistory` PRIMARY KEY (`MigrationId`)
+) CHARACTER SET=utf8mb4;
+[2023-10-21 00:59:23.322 -05:00 INF] Executed DbCommand (30ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='Ropa' AND TABLE_NAME='__EFMigrationsHistory';
+[2023-10-21 00:59:23.336 -05:00 INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `MigrationId`, `ProductVersion`
+FROM `__EFMigrationsHistory`
+ORDER BY `MigrationId`;
+[2023-10-21 00:59:23.348 -05:00 INF] Applying migration '20231020221417_InitialMigration'.
+[2023-10-21 00:59:23.431 -05:00 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER DATABASE CHARACTER SET utf8mb4;
+[2023-10-21 00:59:23.439 -05:00 INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `Cargo` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `Descripcion` varchar(150) CHARACTER SET utf8mb4 NOT NULL,
+    `SueldoBase` double NOT NULL,
+    CONSTRAINT `PK_Cargo` PRIMARY KEY (`Id`)
+) CHARACTER SET=utf8mb4;
+[2023-10-21 00:59:23.446 -05:00 INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `Color` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `Descripcion` varchar(250) CHARACTER SET utf8mb4 NOT NULL,
+    CONSTRAINT `PK_Color` PRIMARY KEY (`Id`)
+) CHARACTER SET=utf8mb4;
+[2023-10-21 00:59:23.458 -05:00 INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `FormaPago` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `Descripcion` varchar(250) CHARACTER SET utf8mb4 NOT NULL,
+    CONSTRAINT `PK_FormaPago` PRIMARY KEY (`Id`)
+) CHARACTER SET=utf8mb4;
+[2023-10-21 00:59:23.470 -05:00 INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `Genero` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `Descripcion` varchar(250) CHARACTER SET utf8mb4 NOT NULL,
+    CONSTRAINT `PK_Genero` PRIMARY KEY (`Id`)
+) CHARACTER SET=utf8mb4;
+[2023-10-21 00:59:23.484 -05:00 INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `Insumo` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `Nombre` varchar(250) CHARACTER SET utf8mb4 NOT NULL,
+    `ValorUnitario` double NOT NULL,
+    `StockMinimo` int NOT NULL,
+    `StockMaximo` int NOT NULL,
+    CONSTRAINT `PK_Insumo` PRIMARY KEY (`Id`),
+    CONSTRAINT `AK_Insumo_Nombre` UNIQUE (`Nombre`)
+) CHARACTER SET=utf8mb4;
+[2023-10-21 00:59:23.495 -05:00 INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `Pais` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `Nombre` varchar(250) CHARACTER SET utf8mb4 NOT NULL,
+    CONSTRAINT `PK_Pais` PRIMARY KEY (`Id`)
+) CHARACTER SET=utf8mb4;
+[2023-10-21 00:59:23.505 -05:00 INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `rol` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `rolName` varchar(50) CHARACTER SET utf8mb4 NOT NULL,
+    CONSTRAINT `PK_rol` PRIMARY KEY (`Id`)
+) CHARACTER SET=utf8mb4;
+[2023-10-21 00:59:23.515 -05:00 INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `Talla` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `Descripcion` varchar(250) CHARACTER SET utf8mb4 NOT NULL,
+    CONSTRAINT `PK_Talla` PRIMARY KEY (`Id`)
+) CHARACTER SET=utf8mb4;
+[2023-10-21 00:59:23.527 -05:00 INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `TipoEstado` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `Descripcion` varchar(250) CHARACTER SET utf8mb4 NOT NULL,
+    CONSTRAINT `PK_TipoEstado` PRIMARY KEY (`Id`)
+) CHARACTER SET=utf8mb4;
+[2023-10-21 00:59:23.537 -05:00 INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `TipoPersona` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `Descripcion` varchar(250) CHARACTER SET utf8mb4 NOT NULL,
+    CONSTRAINT `PK_TipoPersona` PRIMARY KEY (`Id`)
+) CHARACTER SET=utf8mb4;
+[2023-10-21 00:59:23.577 -05:00 INF] Executed DbCommand (39ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `TipoProteccion` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `Descripcion` varchar(250) CHARACTER SET utf8mb4 NOT NULL,
+    CONSTRAINT `PK_TipoProteccion` PRIMARY KEY (`Id`)
+) CHARACTER SET=utf8mb4;
+[2023-10-21 00:59:23.588 -05:00 INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `user` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `username` varchar(50) CHARACTER SET utf8mb4 NULL,
+    `email` varchar(100) CHARACTER SET utf8mb4 NOT NULL,
+    `password` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
+    CONSTRAINT `PK_user` PRIMARY KEY (`Id`)
+) CHARACTER SET=utf8mb4;
+[2023-10-21 00:59:23.602 -05:00 INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `Departamento` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `PaisId` int NOT NULL,
+    `Nombre` varchar(100) CHARACTER SET utf8mb4 NOT NULL,
+    CONSTRAINT `PK_Departamento` PRIMARY KEY (`Id`),
+    CONSTRAINT `FK_Departamento_Pais_PaisId` FOREIGN KEY (`PaisId`) REFERENCES `Pais` (`Id`) ON DELETE CASCADE
+) CHARACTER SET=utf8mb4;
+[2023-10-21 00:59:23.621 -05:00 INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `Estado` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `Descripcion` varchar(250) CHARACTER SET utf8mb4 NOT NULL,
+    `TipoEstadoId` int NOT NULL,
+    CONSTRAINT `PK_Estado` PRIMARY KEY (`Id`),
+    CONSTRAINT `FK_Estado_TipoEstado_TipoEstadoId` FOREIGN KEY (`TipoEstadoId`) REFERENCES `TipoEstado` (`Id`) ON DELETE CASCADE
+) CHARACTER SET=utf8mb4;
+[2023-10-21 00:59:23.638 -05:00 INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `RefreshToken` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `UserId` int NOT NULL,
+    `Token` longtext CHARACTER SET utf8mb4 NULL,
+    `Expires` datetime(6) NOT NULL,
+    `Created` datetime(6) NOT NULL,
+    `Revoked` datetime(6) NULL,
+    CONSTRAINT `PK_RefreshToken` PRIMARY KEY (`Id`),
+    CONSTRAINT `FK_RefreshToken_user_UserId` FOREIGN KEY (`UserId`) REFERENCES `user` (`Id`) ON DELETE CASCADE
+) CHARACTER SET=utf8mb4;
+[2023-10-21 00:59:23.653 -05:00 INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `userRol` (
+    `UserId` int NOT NULL,
+    `RolId` int NOT NULL,
+    CONSTRAINT `PK_userRol` PRIMARY KEY (`UserId`, `RolId`),
+    CONSTRAINT `FK_userRol_rol_RolId` FOREIGN KEY (`RolId`) REFERENCES `rol` (`Id`) ON DELETE CASCADE,
+    CONSTRAINT `FK_userRol_user_UserId` FOREIGN KEY (`UserId`) REFERENCES `user` (`Id`) ON DELETE CASCADE
+) CHARACTER SET=utf8mb4;
+[2023-10-21 00:59:23.666 -05:00 INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `Municipio` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `DepartamentoId` int NOT NULL,
+    CONSTRAINT `PK_Municipio` PRIMARY KEY (`Id`),
+    CONSTRAINT `FK_Municipio_Departamento_DepartamentoId` FOREIGN KEY (`DepartamentoId`) REFERENCES `Departamento` (`Id`) ON DELETE CASCADE
+) CHARACTER SET=utf8mb4;
+[2023-10-21 00:59:23.684 -05:00 INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `Prenda` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `CodigoPrenda` varchar(250) CHARACTER SET utf8mb4 NOT NULL,
+    `Nombre` varchar(250) CHARACTER SET utf8mb4 NOT NULL,
+    `ValorUnitarioCOP` double NOT NULL,
+    `ValorUnitarioUSD` double NOT NULL,
+    `EstadoId` int NOT NULL,
+    `TipoProteccionId` int NOT NULL,
+    `GeneroId` int NOT NULL,
+    CONSTRAINT `PK_Prenda` PRIMARY KEY (`Id`),
+    CONSTRAINT `AK_Prenda_CodigoPrenda` UNIQUE (`CodigoPrenda`),
+    CONSTRAINT `FK_Prenda_Estado_EstadoId` FOREIGN KEY (`EstadoId`) REFERENCES `Estado` (`Id`) ON DELETE CASCADE,
+    CONSTRAINT `FK_Prenda_Genero_GeneroId` FOREIGN KEY (`GeneroId`) REFERENCES `Genero` (`Id`) ON DELETE CASCADE,
+    CONSTRAINT `FK_Prenda_TipoProteccion_TipoProteccionId` FOREIGN KEY (`TipoProteccionId`) REFERENCES `TipoProteccion` (`Id`) ON DELETE CASCADE
+) CHARACTER SET=utf8mb4;
+[2023-10-21 00:59:23.702 -05:00 INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `Cliente` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `CodigoCliente` varchar(250) CHARACTER SET utf8mb4 NOT NULL,
+    `TipoPersonaId` int NOT NULL,
+    `MunicipioId` int NOT NULL,
+    `Nombre` varchar(250) CHARACTER SET utf8mb4 NOT NULL,
+    `FechaRegistro` datetime NOT NULL,
+    CONSTRAINT `PK_Cliente` PRIMARY KEY (`Id`),
+    CONSTRAINT `AK_Cliente_CodigoCliente` UNIQUE (`CodigoCliente`),
+    CONSTRAINT `FK_Cliente_Municipio_MunicipioId` FOREIGN KEY (`MunicipioId`) REFERENCES `Municipio` (`Id`) ON DELETE CASCADE,
+    CONSTRAINT `FK_Cliente_TipoPersona_TipoPersonaId` FOREIGN KEY (`TipoPersonaId`) REFERENCES `TipoPersona` (`Id`) ON DELETE CASCADE
+) CHARACTER SET=utf8mb4;
+[2023-10-21 00:59:23.721 -05:00 INF] Executed DbCommand (19ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `Empleado` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `CodigoEmpleado` varchar(250) CHARACTER SET utf8mb4 NOT NULL,
+    `MunicipioId` int NOT NULL,
+    `CargoId` int NOT NULL,
+    `Nombre` varchar(250) CHARACTER SET utf8mb4 NOT NULL,
+    `FechaIngreso` datetime NOT NULL,
+    CONSTRAINT `PK_Empleado` PRIMARY KEY (`Id`),
+    CONSTRAINT `AK_Empleado_CodigoEmpleado` UNIQUE (`CodigoEmpleado`),
+    CONSTRAINT `FK_Empleado_Cargo_CargoId` FOREIGN KEY (`CargoId`) REFERENCES `Cargo` (`Id`) ON DELETE CASCADE,
+    CONSTRAINT `FK_Empleado_Municipio_MunicipioId` FOREIGN KEY (`MunicipioId`) REFERENCES `Municipio` (`Id`) ON DELETE CASCADE
+) CHARACTER SET=utf8mb4;
+[2023-10-21 00:59:23.735 -05:00 INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `Empresa` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `MunicipioId` int NOT NULL,
+    `Nit` varchar(250) CHARACTER SET utf8mb4 NOT NULL,
+    `RazonSocial` varchar(250) CHARACTER SET utf8mb4 NOT NULL,
+    `RepresentanteLegal` varchar(250) CHARACTER SET utf8mb4 NOT NULL,
+    `FechaCreacion` datetime NOT NULL,
+    CONSTRAINT `PK_Empresa` PRIMARY KEY (`Id`),
+    CONSTRAINT `AK_Empresa_Nit` UNIQUE (`Nit`),
+    CONSTRAINT `FK_Empresa_Municipio_MunicipioId` FOREIGN KEY (`MunicipioId`) REFERENCES `Municipio` (`Id`) ON DELETE CASCADE
+) CHARACTER SET=utf8mb4;
+[2023-10-21 00:59:23.752 -05:00 INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `Proveedor` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `NitProveedor` varchar(250) CHARACTER SET utf8mb4 NOT NULL,
+    `Nombre` varchar(250) CHARACTER SET utf8mb4 NOT NULL,
+    `TipoPersonaId` int NOT NULL,
+    `MunicipioId` int NOT NULL,
+    CONSTRAINT `PK_Proveedor` PRIMARY KEY (`Id`),
+    CONSTRAINT `AK_Proveedor_NitProveedor` UNIQUE (`NitProveedor`),
+    CONSTRAINT `FK_Proveedor_Municipio_MunicipioId` FOREIGN KEY (`MunicipioId`) REFERENCES `Municipio` (`Id`) ON DELETE CASCADE,
+    CONSTRAINT `FK_Proveedor_TipoPersona_TipoPersonaId` FOREIGN KEY (`TipoPersonaId`) REFERENCES `TipoPersona` (`Id`) ON DELETE CASCADE
+) CHARACTER SET=utf8mb4;
+[2023-10-21 00:59:23.772 -05:00 INF] Executed DbCommand (19ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `InsumoPrenda` (
+    `InsumoId` int NOT NULL,
+    `PrendaId` int NOT NULL,
+    `Cantidad` int NOT NULL,
+    CONSTRAINT `PK_InsumoPrenda` PRIMARY KEY (`InsumoId`, `PrendaId`),
+    CONSTRAINT `FK_InsumoPrenda_Insumo_InsumoId` FOREIGN KEY (`InsumoId`) REFERENCES `Insumo` (`Id`) ON DELETE CASCADE,
+    CONSTRAINT `FK_InsumoPrenda_Prenda_PrendaId` FOREIGN KEY (`PrendaId`) REFERENCES `Prenda` (`Id`) ON DELETE CASCADE
+) CHARACTER SET=utf8mb4;
+[2023-10-21 00:59:23.786 -05:00 INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `Inventario` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `CodigoInventario` varchar(250) CHARACTER SET utf8mb4 NOT NULL,
+    `PrendaId` int NOT NULL,
+    CONSTRAINT `PK_Inventario` PRIMARY KEY (`Id`),
+    CONSTRAINT `AK_Inventario_CodigoInventario` UNIQUE (`CodigoInventario`),
+    CONSTRAINT `FK_Inventario_Prenda_PrendaId` FOREIGN KEY (`PrendaId`) REFERENCES `Prenda` (`Id`) ON DELETE CASCADE
+) CHARACTER SET=utf8mb4;
+[2023-10-21 00:59:23.808 -05:00 INF] Executed DbCommand (21ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `Orden` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `Fecha` datetime NOT NULL,
+    `EmpleadoId` int NOT NULL,
+    `ClienteId` int NOT NULL,
+    `EstadoId` int NOT NULL,
+    CONSTRAINT `PK_Orden` PRIMARY KEY (`Id`),
+    CONSTRAINT `FK_Orden_Cliente_ClienteId` FOREIGN KEY (`ClienteId`) REFERENCES `Cliente` (`Id`) ON DELETE CASCADE,
+    CONSTRAINT `FK_Orden_Empleado_EmpleadoId` FOREIGN KEY (`EmpleadoId`) REFERENCES `Empleado` (`Id`) ON DELETE CASCADE,
+    CONSTRAINT `FK_Orden_Estado_EstadoId` FOREIGN KEY (`EstadoId`) REFERENCES `Estado` (`Id`) ON DELETE CASCADE
+) CHARACTER SET=utf8mb4;
+[2023-10-21 00:59:23.834 -05:00 INF] Executed DbCommand (26ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `Venta` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `EmpleadoId` int NOT NULL,
+    `ClienteId` int NOT NULL,
+    `FormaPagoId` int NOT NULL,
+    `Fecha` datetime NOT NULL,
+    CONSTRAINT `PK_Venta` PRIMARY KEY (`Id`),
+    CONSTRAINT `FK_Venta_Cliente_ClienteId` FOREIGN KEY (`ClienteId`) REFERENCES `Cliente` (`Id`) ON DELETE CASCADE,
+    CONSTRAINT `FK_Venta_Empleado_EmpleadoId` FOREIGN KEY (`EmpleadoId`) REFERENCES `Empleado` (`Id`) ON DELETE CASCADE,
+    CONSTRAINT `FK_Venta_FormaPago_FormaPagoId` FOREIGN KEY (`FormaPagoId`) REFERENCES `FormaPago` (`Id`) ON DELETE CASCADE
+) CHARACTER SET=utf8mb4;
+[2023-10-21 00:59:23.855 -05:00 INF] Executed DbCommand (21ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `InsumoProveedor` (
+    `ProveedorId` int NOT NULL,
+    `InsumoId` int NOT NULL,
+    CONSTRAINT `PK_InsumoProveedor` PRIMARY KEY (`ProveedorId`, `InsumoId`),
+    CONSTRAINT `FK_InsumoProveedor_Insumo_InsumoId` FOREIGN KEY (`InsumoId`) REFERENCES `Insumo` (`Id`) ON DELETE CASCADE,
+    CONSTRAINT `FK_InsumoProveedor_Proveedor_ProveedorId` FOREIGN KEY (`ProveedorId`) REFERENCES `Proveedor` (`Id`) ON DELETE CASCADE
+) CHARACTER SET=utf8mb4;
+[2023-10-21 00:59:23.873 -05:00 INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `InventarioTalla` (
+    `InventarioId` int NOT NULL,
+    `TallaId` int NOT NULL,
+    `Cantidad` int NOT NULL,
+    CONSTRAINT `PK_InventarioTalla` PRIMARY KEY (`InventarioId`, `TallaId`),
+    CONSTRAINT `FK_InventarioTalla_Inventario_InventarioId` FOREIGN KEY (`InventarioId`) REFERENCES `Inventario` (`Id`) ON DELETE CASCADE,
+    CONSTRAINT `FK_InventarioTalla_Talla_TallaId` FOREIGN KEY (`TallaId`) REFERENCES `Talla` (`Id`) ON DELETE CASCADE
+) CHARACTER SET=utf8mb4;
+[2023-10-21 00:59:23.899 -05:00 INF] Executed DbCommand (26ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `DetalleOrden` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `OrdenId` int NOT NULL,
+    `PrendaId` int NOT NULL,
+    `EstadoId` int NOT NULL,
+    `ColorId` int NOT NULL,
+    `CantidadProducida` double NOT NULL,
+    CONSTRAINT `PK_DetalleOrden` PRIMARY KEY (`Id`),
+    CONSTRAINT `FK_DetalleOrden_Color_ColorId` FOREIGN KEY (`ColorId`) REFERENCES `Color` (`Id`) ON DELETE CASCADE,
+    CONSTRAINT `FK_DetalleOrden_Estado_EstadoId` FOREIGN KEY (`EstadoId`) REFERENCES `Estado` (`Id`) ON DELETE CASCADE,
+    CONSTRAINT `FK_DetalleOrden_Orden_OrdenId` FOREIGN KEY (`OrdenId`) REFERENCES `Orden` (`Id`) ON DELETE CASCADE,
+    CONSTRAINT `FK_DetalleOrden_Prenda_PrendaId` FOREIGN KEY (`PrendaId`) REFERENCES `Prenda` (`Id`) ON DELETE CASCADE
+) CHARACTER SET=utf8mb4;
+[2023-10-21 00:59:23.917 -05:00 INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `DetalleVenta` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `VentaId` int NOT NULL,
+    `InventarioId` int NOT NULL,
+    `TallaId` int NOT NULL,
+    `Cantidad` int NOT NULL,
+    `ValorUnitario` double NOT NULL,
+    CONSTRAINT `PK_DetalleVenta` PRIMARY KEY (`Id`),
+    CONSTRAINT `FK_DetalleVenta_Inventario_InventarioId` FOREIGN KEY (`InventarioId`) REFERENCES `Inventario` (`Id`) ON DELETE CASCADE,
+    CONSTRAINT `FK_DetalleVenta_Talla_TallaId` FOREIGN KEY (`TallaId`) REFERENCES `Talla` (`Id`) ON DELETE CASCADE,
+    CONSTRAINT `FK_DetalleVenta_Venta_VentaId` FOREIGN KEY (`VentaId`) REFERENCES `Venta` (`Id`) ON DELETE CASCADE
+) CHARACTER SET=utf8mb4;
+[2023-10-21 00:59:23.945 -05:00 INF] Executed DbCommand (28ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_Cliente_MunicipioId` ON `Cliente` (`MunicipioId`);
+[2023-10-21 00:59:23.960 -05:00 INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_Cliente_TipoPersonaId` ON `Cliente` (`TipoPersonaId`);
+[2023-10-21 00:59:23.974 -05:00 INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_Departamento_PaisId` ON `Departamento` (`PaisId`);
+[2023-10-21 00:59:23.988 -05:00 INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_DetalleOrden_ColorId` ON `DetalleOrden` (`ColorId`);
+[2023-10-21 00:59:24.000 -05:00 INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_DetalleOrden_EstadoId` ON `DetalleOrden` (`EstadoId`);
+[2023-10-21 00:59:24.011 -05:00 INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_DetalleOrden_OrdenId` ON `DetalleOrden` (`OrdenId`);
+[2023-10-21 00:59:24.022 -05:00 INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_DetalleOrden_PrendaId` ON `DetalleOrden` (`PrendaId`);
+[2023-10-21 00:59:24.036 -05:00 INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_DetalleVenta_InventarioId` ON `DetalleVenta` (`InventarioId`);
+[2023-10-21 00:59:24.049 -05:00 INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_DetalleVenta_TallaId` ON `DetalleVenta` (`TallaId`);
+[2023-10-21 00:59:24.064 -05:00 INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_DetalleVenta_VentaId` ON `DetalleVenta` (`VentaId`);
+[2023-10-21 00:59:24.087 -05:00 INF] Executed DbCommand (22ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_Empleado_CargoId` ON `Empleado` (`CargoId`);
+[2023-10-21 00:59:24.105 -05:00 INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_Empleado_MunicipioId` ON `Empleado` (`MunicipioId`);
+[2023-10-21 00:59:24.115 -05:00 INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_Empresa_MunicipioId` ON `Empresa` (`MunicipioId`);
+[2023-10-21 00:59:24.136 -05:00 INF] Executed DbCommand (19ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_Estado_TipoEstadoId` ON `Estado` (`TipoEstadoId`);
+[2023-10-21 00:59:24.147 -05:00 INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_InsumoPrenda_PrendaId` ON `InsumoPrenda` (`PrendaId`);
+[2023-10-21 00:59:24.159 -05:00 INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_InsumoProveedor_InsumoId` ON `InsumoProveedor` (`InsumoId`);
+[2023-10-21 00:59:24.176 -05:00 INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_Inventario_PrendaId` ON `Inventario` (`PrendaId`);
+[2023-10-21 00:59:24.189 -05:00 INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_InventarioTalla_TallaId` ON `InventarioTalla` (`TallaId`);
+[2023-10-21 00:59:24.209 -05:00 INF] Executed DbCommand (20ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_Municipio_DepartamentoId` ON `Municipio` (`DepartamentoId`);
+[2023-10-21 00:59:24.224 -05:00 INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_Orden_ClienteId` ON `Orden` (`ClienteId`);
+[2023-10-21 00:59:24.235 -05:00 INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_Orden_EmpleadoId` ON `Orden` (`EmpleadoId`);
+[2023-10-21 00:59:24.248 -05:00 INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_Orden_EstadoId` ON `Orden` (`EstadoId`);
+[2023-10-21 00:59:24.266 -05:00 INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_Prenda_EstadoId` ON `Prenda` (`EstadoId`);
+[2023-10-21 00:59:24.287 -05:00 INF] Executed DbCommand (21ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_Prenda_GeneroId` ON `Prenda` (`GeneroId`);
+[2023-10-21 00:59:24.304 -05:00 INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_Prenda_TipoProteccionId` ON `Prenda` (`TipoProteccionId`);
+[2023-10-21 00:59:24.318 -05:00 INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_Proveedor_MunicipioId` ON `Proveedor` (`MunicipioId`);
+[2023-10-21 00:59:24.331 -05:00 INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_Proveedor_TipoPersonaId` ON `Proveedor` (`TipoPersonaId`);
+[2023-10-21 00:59:24.341 -05:00 INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_RefreshToken_UserId` ON `RefreshToken` (`UserId`);
+[2023-10-21 00:59:24.355 -05:00 INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_userRol_RolId` ON `userRol` (`RolId`);
+[2023-10-21 00:59:24.370 -05:00 INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_Venta_ClienteId` ON `Venta` (`ClienteId`);
+[2023-10-21 00:59:24.382 -05:00 INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_Venta_EmpleadoId` ON `Venta` (`EmpleadoId`);
+[2023-10-21 00:59:24.395 -05:00 INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_Venta_FormaPagoId` ON `Venta` (`FormaPagoId`);
+[2023-10-21 00:59:24.399 -05:00 INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `__EFMigrationsHistory` (`MigrationId`, `ProductVersion`)
+VALUES ('20231020221417_InitialMigration', '7.0.10');
+[2023-10-21 00:59:24.401 -05:00 INF] Applying migration '20231021015346_FixMunicipio'.
+[2023-10-21 00:59:24.451 -05:00 INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE `Municipio` ADD `Nombre` varchar(250) CHARACTER SET utf8mb4 NOT NULL DEFAULT '';
+[2023-10-21 00:59:24.461 -05:00 INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE `Talla` ADD CONSTRAINT `AK_Talla_Descripcion` UNIQUE (`Descripcion`);
+[2023-10-21 00:59:24.462 -05:00 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `__EFMigrationsHistory` (`MigrationId`, `ProductVersion`)
+VALUES ('20231021015346_FixMunicipio', '7.0.10');
+[2023-10-21 00:59:41.290 -05:00 INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='Ropa' AND TABLE_NAME='__EFMigrationsHistory';
+[2023-10-21 00:59:41.322 -05:00 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='Ropa' AND TABLE_NAME='__EFMigrationsHistory';
+[2023-10-21 00:59:41.341 -05:00 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `MigrationId`, `ProductVersion`
+FROM `__EFMigrationsHistory`
+ORDER BY `MigrationId`;
+[2023-10-21 00:59:41.354 -05:00 INF] No migrations were applied. The database is already up to date.
+[2023-10-21 00:59:41.460 -05:00 INF] User profile is available. Using 'C:\Users\jhose\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2023-10-21 00:59:41.521 -05:00 INF] Now listening on: http://localhost:5181
+[2023-10-21 00:59:41.523 -05:00 INF] Application started. Press Ctrl+C to shut down.
+[2023-10-21 00:59:41.523 -05:00 INF] Hosting environment: Development
+[2023-10-21 00:59:41.523 -05:00 INF] Content root path: C:\Users\jhose\OneDrive\Escritorio\Ropa\API
+[2023-10-21 00:59:42.171 -05:00 INF] Request starting HTTP/1.1 GET http://localhost:5181/swagger - -
+[2023-10-21 00:59:42.251 -05:00 INF] Request finished HTTP/1.1 GET http://localhost:5181/swagger - - - 301 0 - 87.6374ms
+[2023-10-21 00:59:42.255 -05:00 INF] Request starting HTTP/1.1 GET http://localhost:5181/swagger/index.html - -
+[2023-10-21 00:59:42.308 -05:00 INF] Request finished HTTP/1.1 GET http://localhost:5181/swagger/index.html - - - 200 - text/html;charset=utf-8 52.9889ms
+[2023-10-21 00:59:42.324 -05:00 INF] Request starting HTTP/1.1 GET http://localhost:5181/swagger/swagger-ui.css - -
+[2023-10-21 00:59:42.333 -05:00 INF] Request starting HTTP/1.1 GET http://localhost:5181/swagger/swagger-ui-bundle.js - -
+[2023-10-21 00:59:42.333 -05:00 INF] Request starting HTTP/1.1 GET http://localhost:5181/_framework/aspnetcore-browser-refresh.js - -
+[2023-10-21 00:59:42.333 -05:00 INF] Request starting HTTP/1.1 GET http://localhost:5181/swagger/swagger-ui-standalone-preset.js - -
+[2023-10-21 00:59:42.339 -05:00 INF] Request finished HTTP/1.1 GET http://localhost:5181/_framework/aspnetcore-browser-refresh.js - - - 200 12328 application/javascript;+charset=utf-8 6.0797ms
+[2023-10-21 00:59:42.349 -05:00 INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+[2023-10-21 00:59:42.349 -05:00 INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2023-10-21 00:59:42.352 -05:00 INF] Request finished HTTP/1.1 GET http://localhost:5181/swagger/swagger-ui-standalone-preset.js - - - 200 312163 text/javascript 18.4997ms
+[2023-10-21 00:59:42.352 -05:00 INF] Request finished HTTP/1.1 GET http://localhost:5181/swagger/swagger-ui.css - - - 200 144929 text/css 27.4479ms
+[2023-10-21 00:59:42.386 -05:00 INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+[2023-10-21 00:59:42.387 -05:00 INF] Request finished HTTP/1.1 GET http://localhost:5181/swagger/swagger-ui-bundle.js - - - 200 1061536 text/javascript 53.7996ms
+[2023-10-21 00:59:42.555 -05:00 INF] Request starting HTTP/1.1 GET http://localhost:5181/swagger/v1/swagger.json - -
+[2023-10-21 00:59:42.577 -05:00 INF] Request starting HTTP/1.1 GET http://localhost:5181/swagger/favicon-32x32.png - -
+[2023-10-21 00:59:42.578 -05:00 INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+[2023-10-21 00:59:42.578 -05:00 INF] Request finished HTTP/1.1 GET http://localhost:5181/swagger/favicon-32x32.png - - - 200 628 image/png 0.7853ms
+[2023-10-21 00:59:42.689 -05:00 INF] Request finished HTTP/1.1 GET http://localhost:5181/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 134.3193ms
+[2023-10-21 01:08:57.948 -05:00 INF] Request starting HTTP/1.1 GET http://localhost:5181/api/Orden/GetOrdenesByCliente?PageSize=1&PageIndex=1&CodigoCliente=87 - -
+[2023-10-21 01:08:57.974 -05:00 WRN] Failed to determine the https port for redirect.
+[2023-10-21 01:08:58.406 -05:00 INF] Executing endpoint 'API.Controllers.OrdenController.GetOrdenesByCliente (API)'
+[2023-10-21 01:08:58.428 -05:00 INF] Route matched with {action = "GetOrdenesByCliente", controller = "Orden"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[API.Helpers.Pager`1[API.Dtos.OrdenCTDto]]] GetOrdenesByCliente(API.Helpers.Params, System.String) on controller API.Controllers.OrdenController (API).
+[2023-10-21 01:08:58.655 -05:00 WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+[2023-10-21 01:08:58.656 -05:00 WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+[2023-10-21 01:08:58.806 -05:00 INF] Executed DbCommand (19ms) [Parameters=[@__CodigoCliente_0='?' (Size = 250), @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`ClienteId`, `t`.`EmpleadoId`, `t`.`EstadoId`, `t`.`Fecha`, `t`.`Id0`, `t`.`CodigoCliente`, `t`.`FechaRegistro`, `t`.`MunicipioId`, `t`.`Nombre`, `t`.`TipoPersonaId`, `m`.`Id`, `m`.`DepartamentoId`, `m`.`Nombre`, `e`.`Id`, `e`.`Descripcion`, `e`.`TipoEstadoId`, `t0`.`Id`, `t0`.`Descripcion`, `t1`.`Id`, `t1`.`CantidadProducida`, `t1`.`ColorId`, `t1`.`EstadoId`, `t1`.`OrdenId`, `t1`.`PrendaId`, `t1`.`Id0`, `t1`.`CodigoPrenda`, `t1`.`EstadoId0`, `t1`.`GeneroId`, `t1`.`Nombre`, `t1`.`TipoProteccionId`, `t1`.`ValorUnitarioCOP`, `t1`.`ValorUnitarioUSD`
+FROM (
+    SELECT `o`.`Id`, `o`.`ClienteId`, `o`.`EmpleadoId`, `o`.`EstadoId`, `o`.`Fecha`, `c`.`Id` AS `Id0`, `c`.`CodigoCliente`, `c`.`FechaRegistro`, `c`.`MunicipioId`, `c`.`Nombre`, `c`.`TipoPersonaId`
+    FROM `Orden` AS `o`
+    INNER JOIN `Cliente` AS `c` ON `o`.`ClienteId` = `c`.`Id`
+    WHERE `c`.`CodigoCliente` = @__CodigoCliente_0
+    LIMIT @__p_2 OFFSET @__p_1
+) AS `t`
+INNER JOIN `Municipio` AS `m` ON `t`.`MunicipioId` = `m`.`Id`
+INNER JOIN `Estado` AS `e` ON `t`.`EstadoId` = `e`.`Id`
+INNER JOIN `TipoEstado` AS `t0` ON `e`.`TipoEstadoId` = `t0`.`Id`
+LEFT JOIN (
+    SELECT `d`.`Id`, `d`.`CantidadProducida`, `d`.`ColorId`, `d`.`EstadoId`, `d`.`OrdenId`, `d`.`PrendaId`, `p`.`Id` AS `Id0`, `p`.`CodigoPrenda`, `p`.`EstadoId` AS `EstadoId0`, `p`.`GeneroId`, `p`.`Nombre`, `p`.`TipoProteccionId`, `p`.`ValorUnitarioCOP`, `p`.`ValorUnitarioUSD`
+    FROM `DetalleOrden` AS `d`
+    INNER JOIN `Prenda` AS `p` ON `d`.`PrendaId` = `p`.`Id`
+) AS `t1` ON `t`.`Id` = `t1`.`OrdenId`
+ORDER BY `t`.`Id`, `t`.`Id0`, `m`.`Id`, `e`.`Id`, `t0`.`Id`, `t1`.`Id`
+[2023-10-21 01:08:58.932 -05:00 INF] Executed action API.Controllers.OrdenController.GetOrdenesByCliente (API) in 501.6515ms
+[2023-10-21 01:08:58.933 -05:00 INF] Executed endpoint 'API.Controllers.OrdenController.GetOrdenesByCliente (API)'
+[2023-10-21 01:08:58.952 -05:00 ERR] Error mapping types.
+
+Mapping types:
+List`1 -> List`1
+System.Collections.Generic.List`1[[Domain.Entities.Orden, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> System.Collections.Generic.List`1[[API.Dtos.OrdenCTDto, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+List`1 -> List`1
+System.Collections.Generic.List`1[[Domain.Entities.Orden, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> System.Collections.Generic.List`1[[API.Dtos.OrdenCTDto, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+ ---> AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+Orden -> OrdenCTDto
+Domain.Entities.Orden -> API.Dtos.OrdenCTDto
+   at lambda_method331(Closure, Orden, OrdenCTDto, ResolutionContext)
+   at lambda_method330(Closure, Object, List`1, ResolutionContext)
+   --- End of inner exception stack trace ---
+   at lambda_method330(Closure, Object, List`1, ResolutionContext)
+   at API.Controllers.OrdenController.GetOrdenesByCliente(Params OrdenParams, String CodigoCliente) in C:\Users\jhose\OneDrive\Escritorio\Ropa\API\Controllers\OrdenController.cs:line 129
+   at lambda_method34(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at AspNetCoreRateLimit.RateLimitMiddleware`1.Invoke(HttpContext context) in C:\Users\User\Documents\Github\AspNetCoreRateLimit\src\AspNetCoreRateLimit\Middleware\RateLimitMiddleware.cs:line 124
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at API.Helpers.ExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Users\jhose\OneDrive\Escritorio\Ropa\API\Helpers\ExceptionMiddleware.cs:line 24
+[2023-10-21 01:08:58.958 -05:00 INF] Request finished HTTP/1.1 GET http://localhost:5181/api/Orden/GetOrdenesByCliente?PageSize=1&PageIndex=1&CodigoCliente=87 - - - 500 - application/json 1010.7310ms
+[2023-10-21 01:09:40.667 -05:00 INF] Request starting HTTP/1.1 GET http://localhost:5181/swagger/index.html - -
+[2023-10-21 01:09:40.674 -05:00 INF] Request finished HTTP/1.1 GET http://localhost:5181/swagger/index.html - - - 200 - text/html;charset=utf-8 7.4251ms
+[2023-10-21 01:09:40.705 -05:00 INF] Request starting HTTP/1.1 GET http://localhost:5181/_framework/aspnetcore-browser-refresh.js - -
+[2023-10-21 01:09:40.706 -05:00 INF] Request finished HTTP/1.1 GET http://localhost:5181/_framework/aspnetcore-browser-refresh.js - - - 200 12328 application/javascript;+charset=utf-8 0.5659ms
+[2023-10-21 01:09:40.898 -05:00 INF] Request starting HTTP/1.1 GET http://localhost:5181/swagger/v1/swagger.json - -
+[2023-10-21 01:09:40.929 -05:00 INF] Request finished HTTP/1.1 GET http://localhost:5181/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 31.4220ms
+[2023-10-21 01:10:06.024 -05:00 INF] Request starting HTTP/1.1 GET http://localhost:5181/api/Orden/GetOrdenesByCliente?PageSize=1&PageIndex=1&CodigoCliente=87 - -
+[2023-10-21 01:10:06.027 -05:00 INF] Executing endpoint 'API.Controllers.OrdenController.GetOrdenesByCliente (API)'
+[2023-10-21 01:10:06.030 -05:00 INF] Route matched with {action = "GetOrdenesByCliente", controller = "Orden"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[API.Helpers.Pager`1[API.Dtos.OrdenCTDto]]] GetOrdenesByCliente(API.Helpers.Params, System.String) on controller API.Controllers.OrdenController (API).
+[2023-10-21 01:10:06.076 -05:00 INF] Executed DbCommand (1ms) [Parameters=[@__CodigoCliente_0='?' (Size = 250), @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`ClienteId`, `t`.`EmpleadoId`, `t`.`EstadoId`, `t`.`Fecha`, `t`.`Id0`, `t`.`CodigoCliente`, `t`.`FechaRegistro`, `t`.`MunicipioId`, `t`.`Nombre`, `t`.`TipoPersonaId`, `m`.`Id`, `m`.`DepartamentoId`, `m`.`Nombre`, `e`.`Id`, `e`.`Descripcion`, `e`.`TipoEstadoId`, `t0`.`Id`, `t0`.`Descripcion`, `t1`.`Id`, `t1`.`CantidadProducida`, `t1`.`ColorId`, `t1`.`EstadoId`, `t1`.`OrdenId`, `t1`.`PrendaId`, `t1`.`Id0`, `t1`.`CodigoPrenda`, `t1`.`EstadoId0`, `t1`.`GeneroId`, `t1`.`Nombre`, `t1`.`TipoProteccionId`, `t1`.`ValorUnitarioCOP`, `t1`.`ValorUnitarioUSD`
+FROM (
+    SELECT `o`.`Id`, `o`.`ClienteId`, `o`.`EmpleadoId`, `o`.`EstadoId`, `o`.`Fecha`, `c`.`Id` AS `Id0`, `c`.`CodigoCliente`, `c`.`FechaRegistro`, `c`.`MunicipioId`, `c`.`Nombre`, `c`.`TipoPersonaId`
+    FROM `Orden` AS `o`
+    INNER JOIN `Cliente` AS `c` ON `o`.`ClienteId` = `c`.`Id`
+    WHERE `c`.`CodigoCliente` = @__CodigoCliente_0
+    LIMIT @__p_2 OFFSET @__p_1
+) AS `t`
+INNER JOIN `Municipio` AS `m` ON `t`.`MunicipioId` = `m`.`Id`
+INNER JOIN `Estado` AS `e` ON `t`.`EstadoId` = `e`.`Id`
+INNER JOIN `TipoEstado` AS `t0` ON `e`.`TipoEstadoId` = `t0`.`Id`
+LEFT JOIN (
+    SELECT `d`.`Id`, `d`.`CantidadProducida`, `d`.`ColorId`, `d`.`EstadoId`, `d`.`OrdenId`, `d`.`PrendaId`, `p`.`Id` AS `Id0`, `p`.`CodigoPrenda`, `p`.`EstadoId` AS `EstadoId0`, `p`.`GeneroId`, `p`.`Nombre`, `p`.`TipoProteccionId`, `p`.`ValorUnitarioCOP`, `p`.`ValorUnitarioUSD`
+    FROM `DetalleOrden` AS `d`
+    INNER JOIN `Prenda` AS `p` ON `d`.`PrendaId` = `p`.`Id`
+) AS `t1` ON `t`.`Id` = `t1`.`OrdenId`
+ORDER BY `t`.`Id`, `t`.`Id0`, `m`.`Id`, `e`.`Id`, `t0`.`Id`, `t1`.`Id`
+[2023-10-21 01:10:06.078 -05:00 INF] Executed action API.Controllers.OrdenController.GetOrdenesByCliente (API) in 47.1285ms
+[2023-10-21 01:10:06.078 -05:00 INF] Executed endpoint 'API.Controllers.OrdenController.GetOrdenesByCliente (API)'
+[2023-10-21 01:10:06.080 -05:00 ERR] Error mapping types.
+
+Mapping types:
+List`1 -> List`1
+System.Collections.Generic.List`1[[Domain.Entities.Orden, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> System.Collections.Generic.List`1[[API.Dtos.OrdenCTDto, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+List`1 -> List`1
+System.Collections.Generic.List`1[[Domain.Entities.Orden, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> System.Collections.Generic.List`1[[API.Dtos.OrdenCTDto, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+ ---> AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+Orden -> OrdenCTDto
+Domain.Entities.Orden -> API.Dtos.OrdenCTDto
+   at lambda_method331(Closure, Orden, OrdenCTDto, ResolutionContext)
+   at lambda_method330(Closure, Object, List`1, ResolutionContext)
+   --- End of inner exception stack trace ---
+   at lambda_method330(Closure, Object, List`1, ResolutionContext)
+   at API.Controllers.OrdenController.GetOrdenesByCliente(Params OrdenParams, String CodigoCliente)
+   at lambda_method335(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at AspNetCoreRateLimit.RateLimitMiddleware`1.Invoke(HttpContext context) in C:\Users\User\Documents\Github\AspNetCoreRateLimit\src\AspNetCoreRateLimit\Middleware\RateLimitMiddleware.cs:line 124
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at API.Helpers.ExceptionMiddleware.InvokeAsync(HttpContext context)
+[2023-10-21 01:10:06.083 -05:00 INF] Request finished HTTP/1.1 GET http://localhost:5181/api/Orden/GetOrdenesByCliente?PageSize=1&PageIndex=1&CodigoCliente=87 - - - 500 - application/json 58.4945ms
+[2023-10-21 01:11:18.921 -05:00 INF] Request starting HTTP/1.1 GET http://localhost:5181/api/Orden/GetOrdenesByCliente?PageSize=1&PageIndex=1&CodigoCliente=87 - -
+[2023-10-21 01:11:18.926 -05:00 INF] Executing endpoint 'API.Controllers.OrdenController.GetOrdenesByCliente (API)'
+[2023-10-21 01:11:18.926 -05:00 INF] Route matched with {action = "GetOrdenesByCliente", controller = "Orden"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[API.Helpers.Pager`1[API.Dtos.OrdenCTDto]]] GetOrdenesByCliente(API.Helpers.Params, System.String) on controller API.Controllers.OrdenController (API).
+[2023-10-21 01:11:18.932 -05:00 INF] Executed DbCommand (1ms) [Parameters=[@__CodigoCliente_0='?' (Size = 250), @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`ClienteId`, `t`.`EmpleadoId`, `t`.`EstadoId`, `t`.`Fecha`, `t`.`Id0`, `t`.`CodigoCliente`, `t`.`FechaRegistro`, `t`.`MunicipioId`, `t`.`Nombre`, `t`.`TipoPersonaId`, `m`.`Id`, `m`.`DepartamentoId`, `m`.`Nombre`, `e`.`Id`, `e`.`Descripcion`, `e`.`TipoEstadoId`, `t0`.`Id`, `t0`.`Descripcion`, `t1`.`Id`, `t1`.`CantidadProducida`, `t1`.`ColorId`, `t1`.`EstadoId`, `t1`.`OrdenId`, `t1`.`PrendaId`, `t1`.`Id0`, `t1`.`CodigoPrenda`, `t1`.`EstadoId0`, `t1`.`GeneroId`, `t1`.`Nombre`, `t1`.`TipoProteccionId`, `t1`.`ValorUnitarioCOP`, `t1`.`ValorUnitarioUSD`
+FROM (
+    SELECT `o`.`Id`, `o`.`ClienteId`, `o`.`EmpleadoId`, `o`.`EstadoId`, `o`.`Fecha`, `c`.`Id` AS `Id0`, `c`.`CodigoCliente`, `c`.`FechaRegistro`, `c`.`MunicipioId`, `c`.`Nombre`, `c`.`TipoPersonaId`
+    FROM `Orden` AS `o`
+    INNER JOIN `Cliente` AS `c` ON `o`.`ClienteId` = `c`.`Id`
+    WHERE `c`.`CodigoCliente` = @__CodigoCliente_0
+    LIMIT @__p_2 OFFSET @__p_1
+) AS `t`
+INNER JOIN `Municipio` AS `m` ON `t`.`MunicipioId` = `m`.`Id`
+INNER JOIN `Estado` AS `e` ON `t`.`EstadoId` = `e`.`Id`
+INNER JOIN `TipoEstado` AS `t0` ON `e`.`TipoEstadoId` = `t0`.`Id`
+LEFT JOIN (
+    SELECT `d`.`Id`, `d`.`CantidadProducida`, `d`.`ColorId`, `d`.`EstadoId`, `d`.`OrdenId`, `d`.`PrendaId`, `p`.`Id` AS `Id0`, `p`.`CodigoPrenda`, `p`.`EstadoId` AS `EstadoId0`, `p`.`GeneroId`, `p`.`Nombre`, `p`.`TipoProteccionId`, `p`.`ValorUnitarioCOP`, `p`.`ValorUnitarioUSD`
+    FROM `DetalleOrden` AS `d`
+    INNER JOIN `Prenda` AS `p` ON `d`.`PrendaId` = `p`.`Id`
+) AS `t1` ON `t`.`Id` = `t1`.`OrdenId`
+ORDER BY `t`.`Id`, `t`.`Id0`, `m`.`Id`, `e`.`Id`, `t0`.`Id`, `t1`.`Id`
+[2023-10-21 01:11:18.934 -05:00 INF] Executed action API.Controllers.OrdenController.GetOrdenesByCliente (API) in 7.1259ms
+[2023-10-21 01:11:18.934 -05:00 INF] Executed endpoint 'API.Controllers.OrdenController.GetOrdenesByCliente (API)'
+[2023-10-21 01:11:18.936 -05:00 ERR] Error mapping types.
+
+Mapping types:
+List`1 -> List`1
+System.Collections.Generic.List`1[[Domain.Entities.Orden, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> System.Collections.Generic.List`1[[API.Dtos.OrdenCTDto, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+List`1 -> List`1
+System.Collections.Generic.List`1[[Domain.Entities.Orden, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> System.Collections.Generic.List`1[[API.Dtos.OrdenCTDto, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+ ---> AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+Orden -> OrdenCTDto
+Domain.Entities.Orden -> API.Dtos.OrdenCTDto
+   at lambda_method331(Closure, Orden, OrdenCTDto, ResolutionContext)
+   at lambda_method330(Closure, Object, List`1, ResolutionContext)
+   --- End of inner exception stack trace ---
+   at lambda_method330(Closure, Object, List`1, ResolutionContext)
+   at API.Controllers.OrdenController.GetOrdenesByCliente(Params OrdenParams, String CodigoCliente)
+   at lambda_method335(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at AspNetCoreRateLimit.RateLimitMiddleware`1.Invoke(HttpContext context) in C:\Users\User\Documents\Github\AspNetCoreRateLimit\src\AspNetCoreRateLimit\Middleware\RateLimitMiddleware.cs:line 124
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at API.Helpers.ExceptionMiddleware.InvokeAsync(HttpContext context)
+[2023-10-21 01:11:18.937 -05:00 INF] Request finished HTTP/1.1 GET http://localhost:5181/api/Orden/GetOrdenesByCliente?PageSize=1&PageIndex=1&CodigoCliente=87 - - - 500 - application/json 16.0761ms
+[2023-10-21 01:11:24.176 -05:00 INF] Request starting HTTP/1.1 GET http://localhost:5181/api/Orden/GetOrdenesByCliente?PageSize=1&PageIndex=1&CodigoCliente=87j - -
+[2023-10-21 01:11:24.176 -05:00 INF] Executing endpoint 'API.Controllers.OrdenController.GetOrdenesByCliente (API)'
+[2023-10-21 01:11:24.176 -05:00 INF] Route matched with {action = "GetOrdenesByCliente", controller = "Orden"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[API.Helpers.Pager`1[API.Dtos.OrdenCTDto]]] GetOrdenesByCliente(API.Helpers.Params, System.String) on controller API.Controllers.OrdenController (API).
+[2023-10-21 01:11:24.179 -05:00 INF] Executed DbCommand (1ms) [Parameters=[@__CodigoCliente_0='?' (Size = 250), @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`ClienteId`, `t`.`EmpleadoId`, `t`.`EstadoId`, `t`.`Fecha`, `t`.`Id0`, `t`.`CodigoCliente`, `t`.`FechaRegistro`, `t`.`MunicipioId`, `t`.`Nombre`, `t`.`TipoPersonaId`, `m`.`Id`, `m`.`DepartamentoId`, `m`.`Nombre`, `e`.`Id`, `e`.`Descripcion`, `e`.`TipoEstadoId`, `t0`.`Id`, `t0`.`Descripcion`, `t1`.`Id`, `t1`.`CantidadProducida`, `t1`.`ColorId`, `t1`.`EstadoId`, `t1`.`OrdenId`, `t1`.`PrendaId`, `t1`.`Id0`, `t1`.`CodigoPrenda`, `t1`.`EstadoId0`, `t1`.`GeneroId`, `t1`.`Nombre`, `t1`.`TipoProteccionId`, `t1`.`ValorUnitarioCOP`, `t1`.`ValorUnitarioUSD`
+FROM (
+    SELECT `o`.`Id`, `o`.`ClienteId`, `o`.`EmpleadoId`, `o`.`EstadoId`, `o`.`Fecha`, `c`.`Id` AS `Id0`, `c`.`CodigoCliente`, `c`.`FechaRegistro`, `c`.`MunicipioId`, `c`.`Nombre`, `c`.`TipoPersonaId`
+    FROM `Orden` AS `o`
+    INNER JOIN `Cliente` AS `c` ON `o`.`ClienteId` = `c`.`Id`
+    WHERE `c`.`CodigoCliente` = @__CodigoCliente_0
+    LIMIT @__p_2 OFFSET @__p_1
+) AS `t`
+INNER JOIN `Municipio` AS `m` ON `t`.`MunicipioId` = `m`.`Id`
+INNER JOIN `Estado` AS `e` ON `t`.`EstadoId` = `e`.`Id`
+INNER JOIN `TipoEstado` AS `t0` ON `e`.`TipoEstadoId` = `t0`.`Id`
+LEFT JOIN (
+    SELECT `d`.`Id`, `d`.`CantidadProducida`, `d`.`ColorId`, `d`.`EstadoId`, `d`.`OrdenId`, `d`.`PrendaId`, `p`.`Id` AS `Id0`, `p`.`CodigoPrenda`, `p`.`EstadoId` AS `EstadoId0`, `p`.`GeneroId`, `p`.`Nombre`, `p`.`TipoProteccionId`, `p`.`ValorUnitarioCOP`, `p`.`ValorUnitarioUSD`
+    FROM `DetalleOrden` AS `d`
+    INNER JOIN `Prenda` AS `p` ON `d`.`PrendaId` = `p`.`Id`
+) AS `t1` ON `t`.`Id` = `t1`.`OrdenId`
+ORDER BY `t`.`Id`, `t`.`Id0`, `m`.`Id`, `e`.`Id`, `t0`.`Id`, `t1`.`Id`
+[2023-10-21 01:11:24.183 -05:00 INF] Executing ObjectResult, writing value of type 'API.Helpers.Pager`1[[API.Dtos.OrdenCTDto, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2023-10-21 01:11:24.194 -05:00 INF] Executed action API.Controllers.OrdenController.GetOrdenesByCliente (API) in 17.2978ms
+[2023-10-21 01:11:24.194 -05:00 INF] Executed endpoint 'API.Controllers.OrdenController.GetOrdenesByCliente (API)'
+[2023-10-21 01:11:24.194 -05:00 INF] Request finished HTTP/1.1 GET http://localhost:5181/api/Orden/GetOrdenesByCliente?PageSize=1&PageIndex=1&CodigoCliente=87j - - - 200 - application/json;+charset=utf-8 18.8828ms
+[2023-10-21 01:11:29.076 -05:00 INF] Request starting HTTP/1.1 GET http://localhost:5181/api/Orden/GetOrdenesByCliente?PageSize=1&PageIndex=1&CodigoCliente=87 - -
+[2023-10-21 01:11:29.077 -05:00 INF] Request get:/api/orden/getordenesbycliente from IP ::1 has been blocked, quota 2/15s exceeded by 1. Blocked by rule *, TraceIdentifier 0HMUHVBLIDS6Q:00000004. MonitorMode: False
+[2023-10-21 01:11:29.078 -05:00 INF] Request finished HTTP/1.1 GET http://localhost:5181/api/Orden/GetOrdenesByCliente?PageSize=1&PageIndex=1&CodigoCliente=87 - - - 429 - text/plain 2.3945ms
+[2023-10-21 01:11:45.758 -05:00 INF] Request starting HTTP/1.1 GET http://localhost:5181/api/Orden/GetOrdenesByCliente?PageSize=1&PageIndex=1&CodigoCliente=87 - -
+[2023-10-21 01:11:45.759 -05:00 INF] Executing endpoint 'API.Controllers.OrdenController.GetOrdenesByCliente (API)'
+[2023-10-21 01:11:45.759 -05:00 INF] Route matched with {action = "GetOrdenesByCliente", controller = "Orden"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[API.Helpers.Pager`1[API.Dtos.OrdenCTDto]]] GetOrdenesByCliente(API.Helpers.Params, System.String) on controller API.Controllers.OrdenController (API).
+[2023-10-21 01:11:45.762 -05:00 INF] Executed DbCommand (1ms) [Parameters=[@__CodigoCliente_0='?' (Size = 250), @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`ClienteId`, `t`.`EmpleadoId`, `t`.`EstadoId`, `t`.`Fecha`, `t`.`Id0`, `t`.`CodigoCliente`, `t`.`FechaRegistro`, `t`.`MunicipioId`, `t`.`Nombre`, `t`.`TipoPersonaId`, `m`.`Id`, `m`.`DepartamentoId`, `m`.`Nombre`, `e`.`Id`, `e`.`Descripcion`, `e`.`TipoEstadoId`, `t0`.`Id`, `t0`.`Descripcion`, `t1`.`Id`, `t1`.`CantidadProducida`, `t1`.`ColorId`, `t1`.`EstadoId`, `t1`.`OrdenId`, `t1`.`PrendaId`, `t1`.`Id0`, `t1`.`CodigoPrenda`, `t1`.`EstadoId0`, `t1`.`GeneroId`, `t1`.`Nombre`, `t1`.`TipoProteccionId`, `t1`.`ValorUnitarioCOP`, `t1`.`ValorUnitarioUSD`
+FROM (
+    SELECT `o`.`Id`, `o`.`ClienteId`, `o`.`EmpleadoId`, `o`.`EstadoId`, `o`.`Fecha`, `c`.`Id` AS `Id0`, `c`.`CodigoCliente`, `c`.`FechaRegistro`, `c`.`MunicipioId`, `c`.`Nombre`, `c`.`TipoPersonaId`
+    FROM `Orden` AS `o`
+    INNER JOIN `Cliente` AS `c` ON `o`.`ClienteId` = `c`.`Id`
+    WHERE `c`.`CodigoCliente` = @__CodigoCliente_0
+    LIMIT @__p_2 OFFSET @__p_1
+) AS `t`
+INNER JOIN `Municipio` AS `m` ON `t`.`MunicipioId` = `m`.`Id`
+INNER JOIN `Estado` AS `e` ON `t`.`EstadoId` = `e`.`Id`
+INNER JOIN `TipoEstado` AS `t0` ON `e`.`TipoEstadoId` = `t0`.`Id`
+LEFT JOIN (
+    SELECT `d`.`Id`, `d`.`CantidadProducida`, `d`.`ColorId`, `d`.`EstadoId`, `d`.`OrdenId`, `d`.`PrendaId`, `p`.`Id` AS `Id0`, `p`.`CodigoPrenda`, `p`.`EstadoId` AS `EstadoId0`, `p`.`GeneroId`, `p`.`Nombre`, `p`.`TipoProteccionId`, `p`.`ValorUnitarioCOP`, `p`.`ValorUnitarioUSD`
+    FROM `DetalleOrden` AS `d`
+    INNER JOIN `Prenda` AS `p` ON `d`.`PrendaId` = `p`.`Id`
+) AS `t1` ON `t`.`Id` = `t1`.`OrdenId`
+ORDER BY `t`.`Id`, `t`.`Id0`, `m`.`Id`, `e`.`Id`, `t0`.`Id`, `t1`.`Id`
+[2023-10-21 01:11:45.763 -05:00 INF] Executed action API.Controllers.OrdenController.GetOrdenesByCliente (API) in 4.3252ms
+[2023-10-21 01:11:45.764 -05:00 INF] Executed endpoint 'API.Controllers.OrdenController.GetOrdenesByCliente (API)'
+[2023-10-21 01:11:45.765 -05:00 ERR] Error mapping types.
+
+Mapping types:
+List`1 -> List`1
+System.Collections.Generic.List`1[[Domain.Entities.Orden, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> System.Collections.Generic.List`1[[API.Dtos.OrdenCTDto, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+List`1 -> List`1
+System.Collections.Generic.List`1[[Domain.Entities.Orden, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> System.Collections.Generic.List`1[[API.Dtos.OrdenCTDto, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+ ---> AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+Orden -> OrdenCTDto
+Domain.Entities.Orden -> API.Dtos.OrdenCTDto
+   at lambda_method331(Closure, Orden, OrdenCTDto, ResolutionContext)
+   at lambda_method330(Closure, Object, List`1, ResolutionContext)
+   --- End of inner exception stack trace ---
+   at lambda_method330(Closure, Object, List`1, ResolutionContext)
+   at API.Controllers.OrdenController.GetOrdenesByCliente(Params OrdenParams, String CodigoCliente)
+   at lambda_method335(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at AspNetCoreRateLimit.RateLimitMiddleware`1.Invoke(HttpContext context) in C:\Users\User\Documents\Github\AspNetCoreRateLimit\src\AspNetCoreRateLimit\Middleware\RateLimitMiddleware.cs:line 124
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at API.Helpers.ExceptionMiddleware.InvokeAsync(HttpContext context)
+[2023-10-21 01:11:45.766 -05:00 INF] Request finished HTTP/1.1 GET http://localhost:5181/api/Orden/GetOrdenesByCliente?PageSize=1&PageIndex=1&CodigoCliente=87 - - - 500 - application/json 7.6775ms
+[2023-10-21 01:12:15.282 -05:00 INF] Application is shutting down...
+[2023-10-21 01:12:24.010 -05:00 INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='Ropa' AND TABLE_NAME='__EFMigrationsHistory';
+[2023-10-21 01:12:24.048 -05:00 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='Ropa' AND TABLE_NAME='__EFMigrationsHistory';
+[2023-10-21 01:12:24.072 -05:00 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `MigrationId`, `ProductVersion`
+FROM `__EFMigrationsHistory`
+ORDER BY `MigrationId`;
+[2023-10-21 01:12:24.089 -05:00 INF] No migrations were applied. The database is already up to date.
+[2023-10-21 01:12:24.196 -05:00 INF] User profile is available. Using 'C:\Users\jhose\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2023-10-21 01:12:24.235 -05:00 INF] Now listening on: http://localhost:5181
+[2023-10-21 01:12:24.237 -05:00 INF] Application started. Press Ctrl+C to shut down.
+[2023-10-21 01:12:24.237 -05:00 INF] Hosting environment: Development
+[2023-10-21 01:12:24.238 -05:00 INF] Content root path: C:\Users\jhose\OneDrive\Escritorio\Ropa\API
+[2023-10-21 01:12:24.586 -05:00 INF] Request starting HTTP/1.1 GET http://localhost:5181/swagger/index.html - -
+[2023-10-21 01:12:24.760 -05:00 INF] Request finished HTTP/1.1 GET http://localhost:5181/swagger/index.html - - - 200 - text/html;charset=utf-8 180.7716ms
+[2023-10-21 01:12:24.793 -05:00 INF] Request starting HTTP/1.1 GET http://localhost:5181/_framework/aspnetcore-browser-refresh.js - -
+[2023-10-21 01:12:24.800 -05:00 INF] Request finished HTTP/1.1 GET http://localhost:5181/_framework/aspnetcore-browser-refresh.js - - - 200 12328 application/javascript;+charset=utf-8 6.3433ms
+[2023-10-21 01:12:25.085 -05:00 INF] Request starting HTTP/1.1 GET http://localhost:5181/swagger/v1/swagger.json - -
+[2023-10-21 01:12:25.271 -05:00 INF] Request finished HTTP/1.1 GET http://localhost:5181/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 186.5617ms
+[2023-10-21 01:12:29.595 -05:00 INF] Request starting HTTP/1.1 GET http://localhost:5181/api/Orden/GetOrdenesByCliente?PageSize=1&PageIndex=1&CodigoCliente=87 - -
+[2023-10-21 01:12:29.609 -05:00 WRN] Failed to determine the https port for redirect.
+[2023-10-21 01:12:29.673 -05:00 INF] Executing endpoint 'API.Controllers.OrdenController.GetOrdenesByCliente (API)'
+[2023-10-21 01:12:29.693 -05:00 INF] Route matched with {action = "GetOrdenesByCliente", controller = "Orden"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[API.Helpers.Pager`1[API.Dtos.OrdenCTDto]]] GetOrdenesByCliente(API.Helpers.Params, System.String) on controller API.Controllers.OrdenController (API).
+[2023-10-21 01:12:29.910 -05:00 WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+[2023-10-21 01:12:29.910 -05:00 WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+[2023-10-21 01:12:30.039 -05:00 INF] Executed DbCommand (18ms) [Parameters=[@__CodigoCliente_0='?' (Size = 250), @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`ClienteId`, `t`.`EmpleadoId`, `t`.`EstadoId`, `t`.`Fecha`, `t`.`Id0`, `t`.`CodigoCliente`, `t`.`FechaRegistro`, `t`.`MunicipioId`, `t`.`Nombre`, `t`.`TipoPersonaId`, `m`.`Id`, `m`.`DepartamentoId`, `m`.`Nombre`, `e`.`Id`, `e`.`Descripcion`, `e`.`TipoEstadoId`, `t0`.`Id`, `t0`.`Descripcion`, `t1`.`Id`, `t1`.`CantidadProducida`, `t1`.`ColorId`, `t1`.`EstadoId`, `t1`.`OrdenId`, `t1`.`PrendaId`, `t1`.`Id0`, `t1`.`CodigoPrenda`, `t1`.`EstadoId0`, `t1`.`GeneroId`, `t1`.`Nombre`, `t1`.`TipoProteccionId`, `t1`.`ValorUnitarioCOP`, `t1`.`ValorUnitarioUSD`
+FROM (
+    SELECT `o`.`Id`, `o`.`ClienteId`, `o`.`EmpleadoId`, `o`.`EstadoId`, `o`.`Fecha`, `c`.`Id` AS `Id0`, `c`.`CodigoCliente`, `c`.`FechaRegistro`, `c`.`MunicipioId`, `c`.`Nombre`, `c`.`TipoPersonaId`
+    FROM `Orden` AS `o`
+    INNER JOIN `Cliente` AS `c` ON `o`.`ClienteId` = `c`.`Id`
+    WHERE `c`.`CodigoCliente` = @__CodigoCliente_0
+    LIMIT @__p_2 OFFSET @__p_1
+) AS `t`
+INNER JOIN `Municipio` AS `m` ON `t`.`MunicipioId` = `m`.`Id`
+INNER JOIN `Estado` AS `e` ON `t`.`EstadoId` = `e`.`Id`
+INNER JOIN `TipoEstado` AS `t0` ON `e`.`TipoEstadoId` = `t0`.`Id`
+LEFT JOIN (
+    SELECT `d`.`Id`, `d`.`CantidadProducida`, `d`.`ColorId`, `d`.`EstadoId`, `d`.`OrdenId`, `d`.`PrendaId`, `p`.`Id` AS `Id0`, `p`.`CodigoPrenda`, `p`.`EstadoId` AS `EstadoId0`, `p`.`GeneroId`, `p`.`Nombre`, `p`.`TipoProteccionId`, `p`.`ValorUnitarioCOP`, `p`.`ValorUnitarioUSD`
+    FROM `DetalleOrden` AS `d`
+    INNER JOIN `Prenda` AS `p` ON `d`.`PrendaId` = `p`.`Id`
+) AS `t1` ON `t`.`Id` = `t1`.`OrdenId`
+ORDER BY `t`.`Id`, `t`.`Id0`, `m`.`Id`, `e`.`Id`, `t0`.`Id`, `t1`.`Id`
+[2023-10-21 01:12:30.169 -05:00 INF] Executed action API.Controllers.OrdenController.GetOrdenesByCliente (API) in 473.4103ms
+[2023-10-21 01:12:30.170 -05:00 INF] Executed endpoint 'API.Controllers.OrdenController.GetOrdenesByCliente (API)'
+[2023-10-21 01:12:30.192 -05:00 ERR] Error mapping types.
+
+Mapping types:
+List`1 -> List`1
+System.Collections.Generic.List`1[[Domain.Entities.Orden, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> System.Collections.Generic.List`1[[API.Dtos.OrdenCTDto, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+List`1 -> List`1
+System.Collections.Generic.List`1[[Domain.Entities.Orden, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> System.Collections.Generic.List`1[[API.Dtos.OrdenCTDto, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+ ---> AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+Orden -> OrdenCTDto
+Domain.Entities.Orden -> API.Dtos.OrdenCTDto
+
+Type Map configuration:
+Orden -> OrdenCTDto
+Domain.Entities.Orden -> API.Dtos.OrdenCTDto
+
+Destination Member:
+Cliente
+
+ ---> AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+Cliente -> ClienteCTDto
+Domain.Entities.Cliente -> API.Dtos.ClienteCTDto
+
+Destination Member:
+Cliente
+
+   at lambda_method331(Closure, Cliente, ClienteCTDto, ResolutionContext)
+   at lambda_method330(Closure, Object, List`1, ResolutionContext)
+   --- End of inner exception stack trace ---
+   at lambda_method330(Closure, Object, List`1, ResolutionContext)
+   --- End of inner exception stack trace ---
+   at lambda_method330(Closure, Object, List`1, ResolutionContext)
+   at API.Controllers.OrdenController.GetOrdenesByCliente(Params OrdenParams, String CodigoCliente) in C:\Users\jhose\OneDrive\Escritorio\Ropa\API\Controllers\OrdenController.cs:line 129
+   at lambda_method34(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at AspNetCoreRateLimit.RateLimitMiddleware`1.Invoke(HttpContext context) in C:\Users\User\Documents\Github\AspNetCoreRateLimit\src\AspNetCoreRateLimit\Middleware\RateLimitMiddleware.cs:line 124
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at API.Helpers.ExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Users\jhose\OneDrive\Escritorio\Ropa\API\Helpers\ExceptionMiddleware.cs:line 24
+[2023-10-21 01:12:30.202 -05:00 INF] Request finished HTTP/1.1 GET http://localhost:5181/api/Orden/GetOrdenesByCliente?PageSize=1&PageIndex=1&CodigoCliente=87 - - - 500 - application/json 606.2108ms
+[2023-10-21 01:18:45.407 -05:00 INF] Request starting HTTP/1.1 GET http://localhost:5181/swagger/index.html - -
+[2023-10-21 01:18:45.419 -05:00 INF] Request finished HTTP/1.1 GET http://localhost:5181/swagger/index.html - - - 200 - text/html;charset=utf-8 11.2614ms
+[2023-10-21 01:18:45.458 -05:00 INF] Request starting HTTP/1.1 GET http://localhost:5181/_framework/aspnetcore-browser-refresh.js - -
+[2023-10-21 01:18:45.462 -05:00 INF] Request finished HTTP/1.1 GET http://localhost:5181/_framework/aspnetcore-browser-refresh.js - - - 200 12328 application/javascript;+charset=utf-8 3.1972ms
+[2023-10-21 01:18:45.639 -05:00 INF] Request starting HTTP/1.1 GET http://localhost:5181/swagger/v1/swagger.json - -
+[2023-10-21 01:18:45.692 -05:00 INF] Request finished HTTP/1.1 GET http://localhost:5181/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 52.9610ms
+[2023-10-21 01:19:04.842 -05:00 INF] Request starting HTTP/1.1 GET http://localhost:5181/swagger/index.html - -
+[2023-10-21 01:19:04.848 -05:00 INF] Request finished HTTP/1.1 GET http://localhost:5181/swagger/index.html - - - 200 - text/html;charset=utf-8 6.5991ms
+[2023-10-21 01:19:04.875 -05:00 INF] Request starting HTTP/1.1 GET http://localhost:5181/_framework/aspnetcore-browser-refresh.js - -
+[2023-10-21 01:19:04.875 -05:00 INF] Request finished HTTP/1.1 GET http://localhost:5181/_framework/aspnetcore-browser-refresh.js - - - 200 12328 application/javascript;+charset=utf-8 0.3119ms
+[2023-10-21 01:19:05.031 -05:00 INF] Request starting HTTP/1.1 GET http://localhost:5181/swagger/v1/swagger.json - -
+[2023-10-21 01:19:05.064 -05:00 INF] Request finished HTTP/1.1 GET http://localhost:5181/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 32.7639ms
+[2023-10-21 01:19:10.291 -05:00 INF] Request starting HTTP/1.1 GET http://localhost:5181/swagger/index.html - -
+[2023-10-21 01:19:10.297 -05:00 INF] Request finished HTTP/1.1 GET http://localhost:5181/swagger/index.html - - - 200 - text/html;charset=utf-8 5.2311ms
+[2023-10-21 01:19:10.315 -05:00 INF] Request starting HTTP/1.1 GET http://localhost:5181/_framework/aspnetcore-browser-refresh.js - -
+[2023-10-21 01:19:10.316 -05:00 INF] Request finished HTTP/1.1 GET http://localhost:5181/_framework/aspnetcore-browser-refresh.js - - - 200 12328 application/javascript;+charset=utf-8 0.3047ms
+[2023-10-21 01:19:10.414 -05:00 INF] Request starting HTTP/1.1 GET http://localhost:5181/swagger/v1/swagger.json - -
+[2023-10-21 01:19:10.440 -05:00 INF] Request finished HTTP/1.1 GET http://localhost:5181/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 25.1330ms
+[2023-10-21 01:19:22.425 -05:00 INF] Application is shutting down...
+[2023-10-21 01:19:31.007 -05:00 INF] Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='Ropa' AND TABLE_NAME='__EFMigrationsHistory';
+[2023-10-21 01:19:31.049 -05:00 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='Ropa' AND TABLE_NAME='__EFMigrationsHistory';
+[2023-10-21 01:19:31.075 -05:00 INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `MigrationId`, `ProductVersion`
+FROM `__EFMigrationsHistory`
+ORDER BY `MigrationId`;
+[2023-10-21 01:19:31.096 -05:00 INF] No migrations were applied. The database is already up to date.
+[2023-10-21 01:19:31.214 -05:00 INF] User profile is available. Using 'C:\Users\jhose\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2023-10-21 01:19:31.253 -05:00 INF] Now listening on: http://localhost:5181
+[2023-10-21 01:19:31.255 -05:00 INF] Application started. Press Ctrl+C to shut down.
+[2023-10-21 01:19:31.255 -05:00 INF] Hosting environment: Development
+[2023-10-21 01:19:31.255 -05:00 INF] Content root path: C:\Users\jhose\OneDrive\Escritorio\Ropa\API
+[2023-10-21 01:19:39.287 -05:00 INF] Request starting HTTP/1.1 GET http://localhost:5181/api/Orden/GetOrdenesByCliente?PageSize=1&PageIndex=1&CodigoCliente=87 - -
+[2023-10-21 01:19:39.334 -05:00 WRN] Failed to determine the https port for redirect.
+[2023-10-21 01:19:39.385 -05:00 INF] Executing endpoint 'API.Controllers.OrdenController.GetOrdenesByCliente (API)'
+[2023-10-21 01:19:39.401 -05:00 INF] Route matched with {action = "GetOrdenesByCliente", controller = "Orden"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[API.Helpers.Pager`1[API.Dtos.OrdenCTDto]]] GetOrdenesByCliente(API.Helpers.Params, System.String) on controller API.Controllers.OrdenController (API).
+[2023-10-21 01:19:39.644 -05:00 WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+[2023-10-21 01:19:39.645 -05:00 WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+[2023-10-21 01:19:39.813 -05:00 INF] Executed DbCommand (28ms) [Parameters=[@__CodigoCliente_0='?' (Size = 250), @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`ClienteId`, `t`.`EmpleadoId`, `t`.`EstadoId`, `t`.`Fecha`, `t`.`Id0`, `t`.`CodigoCliente`, `t`.`FechaRegistro`, `t`.`MunicipioId`, `t`.`Nombre`, `t`.`TipoPersonaId`, `m`.`Id`, `m`.`DepartamentoId`, `m`.`Nombre`, `e`.`Id`, `e`.`Descripcion`, `e`.`TipoEstadoId`, `t0`.`Id`, `t0`.`Descripcion`, `t1`.`Id`, `t1`.`CantidadProducida`, `t1`.`ColorId`, `t1`.`EstadoId`, `t1`.`OrdenId`, `t1`.`PrendaId`, `t1`.`Id0`, `t1`.`CodigoPrenda`, `t1`.`EstadoId0`, `t1`.`GeneroId`, `t1`.`Nombre`, `t1`.`TipoProteccionId`, `t1`.`ValorUnitarioCOP`, `t1`.`ValorUnitarioUSD`
+FROM (
+    SELECT `o`.`Id`, `o`.`ClienteId`, `o`.`EmpleadoId`, `o`.`EstadoId`, `o`.`Fecha`, `c`.`Id` AS `Id0`, `c`.`CodigoCliente`, `c`.`FechaRegistro`, `c`.`MunicipioId`, `c`.`Nombre`, `c`.`TipoPersonaId`
+    FROM `Orden` AS `o`
+    INNER JOIN `Cliente` AS `c` ON `o`.`ClienteId` = `c`.`Id`
+    WHERE `c`.`CodigoCliente` = @__CodigoCliente_0
+    LIMIT @__p_2 OFFSET @__p_1
+) AS `t`
+INNER JOIN `Municipio` AS `m` ON `t`.`MunicipioId` = `m`.`Id`
+INNER JOIN `Estado` AS `e` ON `t`.`EstadoId` = `e`.`Id`
+INNER JOIN `TipoEstado` AS `t0` ON `e`.`TipoEstadoId` = `t0`.`Id`
+LEFT JOIN (
+    SELECT `d`.`Id`, `d`.`CantidadProducida`, `d`.`ColorId`, `d`.`EstadoId`, `d`.`OrdenId`, `d`.`PrendaId`, `p`.`Id` AS `Id0`, `p`.`CodigoPrenda`, `p`.`EstadoId` AS `EstadoId0`, `p`.`GeneroId`, `p`.`Nombre`, `p`.`TipoProteccionId`, `p`.`ValorUnitarioCOP`, `p`.`ValorUnitarioUSD`
+    FROM `DetalleOrden` AS `d`
+    INNER JOIN `Prenda` AS `p` ON `d`.`PrendaId` = `p`.`Id`
+) AS `t1` ON `t`.`Id` = `t1`.`OrdenId`
+ORDER BY `t`.`Id`, `t`.`Id0`, `m`.`Id`, `e`.`Id`, `t0`.`Id`, `t1`.`Id`
+[2023-10-21 01:19:39.973 -05:00 INF] Executing ObjectResult, writing value of type 'API.Helpers.Pager`1[[API.Dtos.OrdenCTDto, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2023-10-21 01:19:40.028 -05:00 INF] Executed action API.Controllers.OrdenController.GetOrdenesByCliente (API) in 623.7625ms
+[2023-10-21 01:19:40.028 -05:00 INF] Executed endpoint 'API.Controllers.OrdenController.GetOrdenesByCliente (API)'
+[2023-10-21 01:19:40.034 -05:00 INF] Request finished HTTP/1.1 GET http://localhost:5181/api/Orden/GetOrdenesByCliente?PageSize=1&PageIndex=1&CodigoCliente=87 - - - 200 - application/json;+charset=utf-8 748.0516ms
+[2023-10-21 01:24:32.638 -05:00 INF] Application is shutting down...
