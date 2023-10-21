@@ -92,5 +92,29 @@ namespace API.Controllers
             await _unitOfWork.SaveAsync();
             return NoContent();
         }
+        [HttpGet("GetVentasByEmpleado")]
+        [MapToApiVersion("1.0")]
+        public async Task<ActionResult<Pager<VentaEmpleadoDto>>> Get(
+            [FromQuery] Params VentaParams,
+            string CodigoEmpleado
+        )
+        {
+            var (totalRegisters, registers, TotalesVentas) = await _unitOfWork.Ventas.GetVentasByEmpleado(
+                VentaParams.PageIndex,
+                VentaParams.PageSize,
+                CodigoEmpleado
+            );
+            var VentaListDto = _mapper.Map<List<VentaEmpleadoDto>>(registers);
+            for (int i = 0; i < VentaListDto.Count; i++)
+            {
+                VentaListDto[i].TotalVenta = TotalesVentas[i];
+            }
+            return new Pager<VentaEmpleadoDto>(
+                VentaListDto,
+                totalRegisters,
+                VentaParams.PageIndex,
+                VentaParams.PageSize
+            );
+        }
     }
 }

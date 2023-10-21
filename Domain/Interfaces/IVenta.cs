@@ -8,6 +8,6 @@ namespace Domain.Interfaces
 {
     public interface IVenta : IGenericRepository<Venta>
     {
-        
+        Task<(int totalRegisters, IEnumerable<Venta> registers, List<double> TotalVenta)> GetVentasByEmpleado (int pageIndex, int pageSize, string CodigoEmpleado);
     }
 }

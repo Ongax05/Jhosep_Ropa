@@ -40,6 +40,7 @@ namespace API.Profiles
             CreateMap<Cliente,ClienteCTDto>().ReverseMap();
             CreateMap<DetalleOrden,DetalleOrdenPrendaDto>().ReverseMap();
             CreateMap<Estado,EstadoCTDto>().ReverseMap();
+            CreateMap<VentaEmpleadoDto,Venta>().ReverseMap();
         }
     }
 }
