@@ -3,21 +3,25 @@ using API.Helpers;
 using AutoMapper;
 using Domain.Entities;
 using Domain.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
+    [ApiVersion("1.0")]
+    [ApiVersion("1.1")]
+    [Authorize(Roles = "Employee,Admin")]
     public class InsumoProveedorController : ApiBaseController
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
-        
+
         public InsumoProveedorController(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
-        
+
         [HttpGet]
         [MapToApiVersion("1.0")]
         public async Task<ActionResult<Pager<InsumoProveedorDto>>> Get(
@@ -40,12 +44,12 @@ namespace API.Controllers
                 InsumoParams.PageSize
             );
         }
-        
+
         private ActionResult<Pager<InsumoProveedorDto>> BadRequest(ApiResponse apiResponse)
         {
-        throw new NotImplementedException();
+            throw new NotImplementedException();
         }
-        
+
         [HttpGet("1.1")]
         [MapToApiVersion("1.1")]
         public async Task<ActionResult<IEnumerable<InsumoProveedorDto>>> Get1_1()
@@ -54,7 +58,7 @@ namespace API.Controllers
             var InsumoListDto = _mapper.Map<List<InsumoProveedorDto>>(registers);
             return InsumoListDto;
         }
-        
+
         [HttpPost]
         [MapToApiVersion("1.0")]
         public async Task<ActionResult<InsumoProveedor>> Post(InsumoProveedorDto InsumoProveedorDto)
@@ -64,7 +68,7 @@ namespace API.Controllers
             await _unitOfWork.SaveAsync();
             return CreatedAtAction(nameof(Post), InsumoProveedorDto);
         }
-        
+
         [HttpPut("{id}")]
         [MapToApiVersion("1.0")]
         public async Task<ActionResult<InsumoProveedorDto>> Put(

@@ -999,3 +999,24 @@ INNER JOIN `Inventario` AS `i0` ON `t`.`InventarioId` = `i0`.`Id`
 [2023-10-21 02:25:07.096 -05:00 INF] Executed endpoint 'API.Controllers.InventarioTallaController.Get (API)'
 [2023-10-21 02:25:07.101 -05:00 INF] Request finished HTTP/1.1 GET http://localhost:5181/api/InventarioTalla?PageSize=1&PageIndex=1 - - - 200 - application/json;+charset=utf-8 980.5189ms
 [2023-10-21 02:32:45.820 -05:00 INF] Application is shutting down...
+[2023-10-21 02:44:33.515 -05:00 INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='Ropa' AND TABLE_NAME='__EFMigrationsHistory';
+[2023-10-21 02:44:33.554 -05:00 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='Ropa' AND TABLE_NAME='__EFMigrationsHistory';
+[2023-10-21 02:44:33.581 -05:00 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `MigrationId`, `ProductVersion`
+FROM `__EFMigrationsHistory`
+ORDER BY `MigrationId`;
+[2023-10-21 02:44:33.599 -05:00 INF] No migrations were applied. The database is already up to date.
+[2023-10-21 02:44:33.710 -05:00 INF] User profile is available. Using 'C:\Users\jhose\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2023-10-21 02:44:33.748 -05:00 INF] Now listening on: http://localhost:5181
+[2023-10-21 02:44:33.750 -05:00 INF] Application started. Press Ctrl+C to shut down.
+[2023-10-21 02:44:33.750 -05:00 INF] Hosting environment: Development
+[2023-10-21 02:44:33.750 -05:00 INF] Content root path: C:\Users\jhose\OneDrive\Escritorio\Ropa\API
+[2023-10-21 02:44:34.071 -05:00 INF] Request starting HTTP/1.1 GET http://localhost:5181/swagger/index.html - -
+[2023-10-21 02:44:34.240 -05:00 INF] Request finished HTTP/1.1 GET http://localhost:5181/swagger/index.html - - - 200 - text/html;charset=utf-8 179.3621ms
+[2023-10-21 02:44:34.282 -05:00 INF] Request starting HTTP/1.1 GET http://localhost:5181/_framework/aspnetcore-browser-refresh.js - -
+[2023-10-21 02:44:34.289 -05:00 INF] Request finished HTTP/1.1 GET http://localhost:5181/_framework/aspnetcore-browser-refresh.js - - - 200 12328 application/javascript;+charset=utf-8 5.2348ms
+[2023-10-21 02:44:34.380 -05:00 INF] Request starting HTTP/1.1 GET http://localhost:5181/swagger/v1/swagger.json - -
+[2023-10-21 02:44:34.560 -05:00 INF] Request finished HTTP/1.1 GET http://localhost:5181/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 179.8019ms
+[2023-10-21 03:10:44.286 -05:00 INF] Application is shutting down...
