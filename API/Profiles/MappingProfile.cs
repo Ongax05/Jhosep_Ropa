@@ -41,6 +41,7 @@ namespace API.Profiles
             CreateMap<DetalleOrden,DetalleOrdenPrendaDto>().ReverseMap();
             CreateMap<Estado,EstadoCTDto>().ReverseMap();
             CreateMap<VentaEmpleadoDto,Venta>().ReverseMap();
+            CreateMap<InventarioTalla,InventarioTallaDto>().ReverseMap();
         }
     }
 }

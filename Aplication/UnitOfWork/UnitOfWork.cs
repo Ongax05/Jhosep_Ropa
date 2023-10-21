@@ -254,6 +254,15 @@ public class UnitOfWork : IUnitOfWork, IDisposable
             return _InsumosPrendas;
         }
     }
+    private IInventarioTalla _InventariosTallas;
+    public IInventarioTalla InventariosTallas
+    {
+        get
+        {
+            _InventariosTallas ??= new InventarioTallaRepository(_context);
+            return _InventariosTallas;
+        }
+    }
     
     public async Task<int> SaveAsync()
     {

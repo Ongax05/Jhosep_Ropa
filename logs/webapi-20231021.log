@@ -956,3 +956,46 @@ ORDER BY `t`.`Id`, `t`.`Id0`
 [2023-10-21 02:05:55.040 -05:00 INF] Executed endpoint 'API.Controllers.VentaController.Get (API)'
 [2023-10-21 02:05:55.040 -05:00 INF] Request finished HTTP/1.1 GET http://localhost:5181/api/Venta/GetVentasByEmpleado?PageSize=1&PageIndex=2&CodigoEmpleado=98 - - - 200 - application/json;+charset=utf-8 61.8434ms
 [2023-10-21 02:06:07.243 -05:00 INF] Application is shutting down...
+[2023-10-21 02:24:46.027 -05:00 INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='Ropa' AND TABLE_NAME='__EFMigrationsHistory';
+[2023-10-21 02:24:46.072 -05:00 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='Ropa' AND TABLE_NAME='__EFMigrationsHistory';
+[2023-10-21 02:24:46.100 -05:00 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `MigrationId`, `ProductVersion`
+FROM `__EFMigrationsHistory`
+ORDER BY `MigrationId`;
+[2023-10-21 02:24:46.113 -05:00 INF] No migrations were applied. The database is already up to date.
+[2023-10-21 02:24:46.234 -05:00 INF] User profile is available. Using 'C:\Users\jhose\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2023-10-21 02:24:46.282 -05:00 INF] Now listening on: http://localhost:5181
+[2023-10-21 02:24:46.284 -05:00 INF] Application started. Press Ctrl+C to shut down.
+[2023-10-21 02:24:46.284 -05:00 INF] Hosting environment: Development
+[2023-10-21 02:24:46.284 -05:00 INF] Content root path: C:\Users\jhose\OneDrive\Escritorio\Ropa\API
+[2023-10-21 02:24:46.692 -05:00 INF] Request starting HTTP/1.1 GET http://localhost:5181/swagger/index.html - -
+[2023-10-21 02:24:46.872 -05:00 INF] Request finished HTTP/1.1 GET http://localhost:5181/swagger/index.html - - - 200 - text/html;charset=utf-8 183.0311ms
+[2023-10-21 02:24:46.930 -05:00 INF] Request starting HTTP/1.1 GET http://localhost:5181/_framework/aspnetcore-browser-refresh.js - -
+[2023-10-21 02:24:46.933 -05:00 INF] Request finished HTTP/1.1 GET http://localhost:5181/_framework/aspnetcore-browser-refresh.js - - - 200 12328 application/javascript;+charset=utf-8 2.9271ms
+[2023-10-21 02:24:47.037 -05:00 INF] Request starting HTTP/1.1 GET http://localhost:5181/swagger/v1/swagger.json - -
+[2023-10-21 02:24:47.227 -05:00 INF] Request finished HTTP/1.1 GET http://localhost:5181/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 189.8715ms
+[2023-10-21 02:25:06.121 -05:00 INF] Request starting HTTP/1.1 GET http://localhost:5181/api/InventarioTalla?PageSize=1&PageIndex=1 - -
+[2023-10-21 02:25:06.157 -05:00 WRN] Failed to determine the https port for redirect.
+[2023-10-21 02:25:06.274 -05:00 INF] Executing endpoint 'API.Controllers.InventarioTallaController.Get (API)'
+[2023-10-21 02:25:06.304 -05:00 INF] Route matched with {action = "Get", controller = "InventarioTalla"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[API.Helpers.Pager`1[API.Dtos.InventarioTallaDto]]] Get(API.Helpers.Params) on controller API.Controllers.InventarioTallaController (API).
+[2023-10-21 02:25:06.657 -05:00 INF] Executed DbCommand (34ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `InventarioTalla` AS `i`
+[2023-10-21 02:25:06.717 -05:00 WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+[2023-10-21 02:25:06.721 -05:00 WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+[2023-10-21 02:25:06.906 -05:00 INF] Executed DbCommand (37ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`InventarioId`, `t`.`TallaId`, `t`.`Cantidad`, `t0`.`Id`, `t0`.`Descripcion`, `i0`.`Id`, `i0`.`CodigoInventario`, `i0`.`PrendaId`
+FROM (
+    SELECT `i`.`InventarioId`, `i`.`TallaId`, `i`.`Cantidad`
+    FROM `InventarioTalla` AS `i`
+    LIMIT @__p_1 OFFSET @__p_0
+) AS `t`
+INNER JOIN `Talla` AS `t0` ON `t`.`TallaId` = `t0`.`Id`
+INNER JOIN `Inventario` AS `i0` ON `t`.`InventarioId` = `i0`.`Id`
+[2023-10-21 02:25:07.074 -05:00 INF] Executing ObjectResult, writing value of type 'API.Helpers.Pager`1[[API.Dtos.InventarioTallaDto, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2023-10-21 02:25:07.096 -05:00 INF] Executed action API.Controllers.InventarioTallaController.Get (API) in 788.0597ms
+[2023-10-21 02:25:07.096 -05:00 INF] Executed endpoint 'API.Controllers.InventarioTallaController.Get (API)'
+[2023-10-21 02:25:07.101 -05:00 INF] Request finished HTTP/1.1 GET http://localhost:5181/api/InventarioTalla?PageSize=1&PageIndex=1 - - - 200 - application/json;+charset=utf-8 980.5189ms
+[2023-10-21 02:32:45.820 -05:00 INF] Application is shutting down...
