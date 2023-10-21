@@ -34,6 +34,8 @@ namespace API.Profiles
             CreateMap<TipoPersona,TipoPersonaDto>().ReverseMap();
             CreateMap<TipoProteccion,TipoProteccionDto>().ReverseMap();
             CreateMap<Venta,VentaDto>().ReverseMap();
+            CreateMap<InsumoPrenda,InsumoPrendaDto>().ReverseMap();
+            CreateMap<InsumoProveedor,InsumoProveedorDto>().ReverseMap();
         }
     }
 }

@@ -235,6 +235,26 @@ public class UnitOfWork : IUnitOfWork, IDisposable
             return _Cargos;
         }
     }
+
+    private IInsumoProveedor _InsumosProveedores;
+    public IInsumoProveedor InsumosProveedores
+    {
+        get
+        {
+            _InsumosProveedores ??= new InsumoProveedorRepository(_context);
+            return _InsumosProveedores;
+        }
+    }
+    private IInsumoPrenda _InsumosPrendas;
+    public IInsumoPrenda InsumosPrendas
+    {
+        get
+        {
+            _InsumosPrendas ??= new InsumoPrendaRepository(_context);
+            return _InsumosPrendas;
+        }
+    }
+    
     public async Task<int> SaveAsync()
     {
         return await _context.SaveChangesAsync();

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\APT01-59\\Desktop\\Jhosep_Ropa\\Persistency\\Persistency.csproj": {}
+    "C:\\Users\\jhose\\OneDrive\\Escritorio\\Ropa\\Persistency\\Persistency.csproj": {}
   },
   "projects": {
-    "C:\\Users\\APT01-59\\Desktop\\Jhosep_Ropa\\Domain\\Domain.csproj": {
+    "C:\\Users\\jhose\\OneDrive\\Escritorio\\Ropa\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\APT01-59\\Desktop\\Jhosep_Ropa\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\jhose\\OneDrive\\Escritorio\\Ropa\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\APT01-59\\Desktop\\Jhosep_Ropa\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\APT01-59\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\APT01-59\\Desktop\\Jhosep_Ropa\\Domain\\obj\\",
+        "projectPath": "C:\\Users\\jhose\\OneDrive\\Escritorio\\Ropa\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\jhose\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jhose\\OneDrive\\Escritorio\\Ropa\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\APT01-59\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\jhose\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -63,21 +63,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\APT01-59\\Desktop\\Jhosep_Ropa\\Persistency\\Persistency.csproj": {
+    "C:\\Users\\jhose\\OneDrive\\Escritorio\\Ropa\\Persistency\\Persistency.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\APT01-59\\Desktop\\Jhosep_Ropa\\Persistency\\Persistency.csproj",
+        "projectUniqueName": "C:\\Users\\jhose\\OneDrive\\Escritorio\\Ropa\\Persistency\\Persistency.csproj",
         "projectName": "Persistency",
-        "projectPath": "C:\\Users\\APT01-59\\Desktop\\Jhosep_Ropa\\Persistency\\Persistency.csproj",
-        "packagesPath": "C:\\Users\\APT01-59\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\APT01-59\\Desktop\\Jhosep_Ropa\\Persistency\\obj\\",
+        "projectPath": "C:\\Users\\jhose\\OneDrive\\Escritorio\\Ropa\\Persistency\\Persistency.csproj",
+        "packagesPath": "C:\\Users\\jhose\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jhose\\OneDrive\\Escritorio\\Ropa\\Persistency\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\APT01-59\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\jhose\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -89,8 +89,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\APT01-59\\Desktop\\Jhosep_Ropa\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\APT01-59\\Desktop\\Jhosep_Ropa\\Domain\\Domain.csproj"
+              "C:\\Users\\jhose\\OneDrive\\Escritorio\\Ropa\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\jhose\\OneDrive\\Escritorio\\Ropa\\Domain\\Domain.csproj"
               }
             }
           }
@@ -130,7 +130,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -2,6 +2,8 @@ namespace Domain.Interfaces;
 
 public interface IUnitOfWork
 {
+    IInsumoPrenda InsumosPrendas {get;}
+    IInsumoProveedor InsumosProveedores {get;}
     IRolRepository Roles { get; }
     IUserRepository Users { get; }
     ICargo Cargos { get; }
