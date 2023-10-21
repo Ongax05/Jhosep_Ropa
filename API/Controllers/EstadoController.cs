@@ -18,7 +18,7 @@ namespace API.Controllers
             _mapper = mapper;
         }
         
-        [HttpGet]
+        [HttpGet("1.1")]
         [MapToApiVersion("1.0")]
         public async Task<ActionResult<Pager<EstadoDto>>> Get(
             [FromQuery] Params EstadoParams

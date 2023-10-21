@@ -46,7 +46,7 @@ namespace API.Controllers
         throw new NotImplementedException();
         }
         
-        [HttpGet]
+        [HttpGet("1.1")]
         [MapToApiVersion("1.1")]
         public async Task<ActionResult<IEnumerable<GeneroDto>>> Get1_1()
         {

@@ -46,7 +46,7 @@ namespace API.Controllers
         throw new NotImplementedException();
         }
         
-        [HttpGet]
+        [HttpGet("1.1")]
         [MapToApiVersion("1.1")]
         public async Task<ActionResult<IEnumerable<InsumoDto>>> Get1_1()
         {
@@ -91,6 +91,31 @@ namespace API.Controllers
             _unitOfWork.Insumos.Remove(Insumo);
             await _unitOfWork.SaveAsync();
             return NoContent();
+        }
+
+        [HttpGet("GetInsumoByPrendas")]
+        [MapToApiVersion("1.0")]
+        public async Task<ActionResult<Pager<InsumoDto>>> GetInsumosByPrendas(
+            [FromQuery] Params InsumoParams,
+            string cod
+        )
+        {
+            if (InsumoParams == null)
+            {
+                return BadRequest(new ApiResponse(400, "Params cannot be null"));
+            }
+            var (totalRegisters, registers) = await _unitOfWork.Insumos.GetInsumosByPrenda(
+                InsumoParams.PageIndex,
+                InsumoParams.PageSize,
+                cod
+            );
+            var InsumoListDto = _mapper.Map<List<InsumoDto>>(registers);
+            return new Pager<InsumoDto>(
+                InsumoListDto,
+                totalRegisters,
+                InsumoParams.PageIndex,
+                InsumoParams.PageSize
+            );
         }
     }
 }

@@ -23,6 +23,8 @@ builder.Services.ConfigureRateLimiting();
 builder.Services.AddAplicacionServices();
 builder.Services.ConfigureApiVersioning();
 builder.Services.AddJwt(builder.Configuration);
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<ApiDbContext>(options =>
 {
@@ -32,6 +34,13 @@ builder.Services.AddDbContext<ApiDbContext>(options =>
 
 var app = builder.Build();
 app.UseMiddleware<ExceptionMiddleware>();
+
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 
 app.UseStatusCodePagesWithReExecute("/errors/{0}");
 using (var scope = app.Services.CreateScope())

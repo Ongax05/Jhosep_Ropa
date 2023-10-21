@@ -14,6 +14,7 @@ namespace Persistency.Data.Configurations
         {
             builder.ToTable("Municipio");
             builder.HasOne(p=>p.Departamento).WithMany(p=>p.Municipios).HasForeignKey(p=>p.DepartamentoId);
+            builder.Property(p=>p.Nombre).HasColumnName("Nombre").HasMaxLength(250).IsRequired();
         }
     }
 }
