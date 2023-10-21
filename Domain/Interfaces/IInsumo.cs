@@ -9,5 +9,6 @@ namespace Domain.Interfaces
     public interface IInsumo : IGenericRepository<Insumo>
     {
         Task<(int totalRegisters, IEnumerable<Insumo> registers)> GetInsumosByPrenda (int pageIndex, int pageSize, string PrendaCod);
+        Task<(int totalRegisters, IEnumerable<Insumo> registers)> GetInsumosByProveedorJuridico (int pageIndex, int pageSize, string ProveedorNit);
     }
 }

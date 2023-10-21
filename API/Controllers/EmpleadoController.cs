@@ -92,5 +92,29 @@ namespace API.Controllers
             await _unitOfWork.SaveAsync();
             return NoContent();
         }
+        [HttpGet("GetEmpleadosByCargo")]
+        [MapToApiVersion("1.0")]
+        public async Task<ActionResult<Pager<EmpleadoDto>>> GetEmpleadosByCargo(
+            [FromQuery] Params EmpleadoParams,
+            string Cargo
+        )
+        {
+            if (EmpleadoParams == null)
+            {
+                return BadRequest(new ApiResponse(400, "Params cannot be null"));
+            }
+            var (totalRegisters, registers) = await _unitOfWork.Empleados.GetEmpleadosByCargo(
+                EmpleadoParams.PageIndex,
+                EmpleadoParams.PageSize,
+                Cargo
+            );
+            var EmpleadoListDto = _mapper.Map<List<EmpleadoDto>>(registers);
+            return new Pager<EmpleadoDto>(
+                EmpleadoListDto,
+                totalRegisters,
+                EmpleadoParams.PageIndex,
+                EmpleadoParams.PageSize
+            );
+        }
     }
 }

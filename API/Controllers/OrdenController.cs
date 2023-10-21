@@ -92,5 +92,27 @@ namespace API.Controllers
             await _unitOfWork.SaveAsync();
             return NoContent();
         }
+        [HttpGet("GetOrdenesByEstadoProceso")]
+        [MapToApiVersion("1.0")]
+        public async Task<ActionResult<Pager<OrdenDto>>> GetOrdenesByEstadoProceso(
+            [FromQuery] Params OrdenParams
+        )
+        {
+            if (OrdenParams == null)
+            {
+                return BadRequest(new ApiResponse(400, "Params cannot be null"));
+            }
+            var (totalRegisters, registers) = await _unitOfWork.Ordenes.GetOrdenesByEstadoProceso(
+                OrdenParams.PageIndex,
+                OrdenParams.PageSize
+            );
+            var OrdenListDto = _mapper.Map<List<OrdenDto>>(registers);
+            return new Pager<OrdenDto>(
+                OrdenListDto,
+                totalRegisters,
+                OrdenParams.PageIndex,
+                OrdenParams.PageSize
+            );
+        }
     }
 }

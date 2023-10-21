@@ -8,6 +8,6 @@ namespace Domain.Interfaces
 {
     public interface IEmpleado : IGenericRepository<Empleado>
     {
-        
+        Task<(int totalRegisters, IEnumerable<Empleado> registers)> GetEmpleadosByCargo (int pageIndex, int pageSize, string Cargo);
     }
 }

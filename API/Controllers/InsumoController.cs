@@ -117,5 +117,29 @@ namespace API.Controllers
                 InsumoParams.PageSize
             );
         }
+        [HttpGet("GetInsumosByProveedorJuridico")]
+        [MapToApiVersion("1.0")]
+        public async Task<ActionResult<Pager<InsumoDto>>> GetInsumosByProveedorJuridico(
+            [FromQuery] Params InsumoParams,
+            string Nit
+        )
+        {
+            if (InsumoParams == null)
+            {
+                return BadRequest(new ApiResponse(400, "Params cannot be null"));
+            }
+            var (totalRegisters, registers) = await _unitOfWork.Insumos.GetInsumosByProveedorJuridico(
+                InsumoParams.PageIndex,
+                InsumoParams.PageSize,
+                Nit
+            );
+            var InsumoListDto = _mapper.Map<List<InsumoDto>>(registers);
+            return new Pager<InsumoDto>(
+                InsumoListDto,
+                totalRegisters,
+                InsumoParams.PageIndex,
+                InsumoParams.PageSize
+            );
+        }
     }
 }
